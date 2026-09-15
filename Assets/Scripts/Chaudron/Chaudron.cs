@@ -2,19 +2,14 @@ using UnityEngine;
 
 public class Chaudron : MonoBehaviour
 {
+    [SerializeField] private Recette[] Recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
     Ingrediant[] listeIngredients;
-    
+
     void Start()
     {
-        
+        AjouteObjets();
     }
-
-    void Update()
-    {
-        
-    }
-
     void UpdateIngredients(string[] newIngredientsId)
     {
         //recup tt les ingredients dans la scene
@@ -32,8 +27,9 @@ public class Chaudron : MonoBehaviour
         //desactive l'objet entièrement
     }
 
-    void AjouteObjets(Ingrediant objet)
+    void AjouteObjets() //Ingrediant objet
     {
-        //animation
+        IngredientsAnimationEvents a = GetComponentInChildren<IngredientsAnimationEvents>();
+        Debug.Log(a.id);
     }
 }
