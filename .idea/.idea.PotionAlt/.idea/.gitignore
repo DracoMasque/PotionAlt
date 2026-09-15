@@ -2,10 +2,17 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
+<<<<<<< Updated upstream
 /modules.xml
 /.idea.PotionAlt.iml
 /contentModel.xml
 /projectSettingsUpdater.xml
+=======
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+/.idea.PotionAlt.iml
+>>>>>>> Stashed changes
 # Editor-based HTTP Client requests
 /httpRequests/
 # Ignored default folder with query files
