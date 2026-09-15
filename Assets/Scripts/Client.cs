@@ -14,23 +14,20 @@ public class Client : MonoBehaviour
     
     public float timer;
     public float maxTimer;
-
-    public GameObject pointArriver;
-    public GameObject pointFaceAuJoueur;
-    private Transform emplacement;
-
+    
     public bool commendeFaite = false;
-    public bool faceAuJoueur = false;
+
+    public Animation animation;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        recettesPossible = Resources.LoadAll<Recette>("ScriptableObjects/Recettes");
-        spritesPossible = Resources.LoadAll<Sprite>("Sprite/Client");
-        emplacement = gameObject.GetComponent<Transform>();
+        recettesPossible = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
+        spritesPossible = Resources.LoadAll<Sprite>("Sprite\\Client");
         imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
         NewClient();
         timer = maxTimer;
+        
     }
 
     // Update is called once per frame
@@ -41,25 +38,28 @@ public class Client : MonoBehaviour
             timer -= Time.deltaTime;
         }
         
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Exit")
-        {
-            NewClient();
-        }
     }
 
     private void NewClient()
     {
+        print(recettesPossible.Length);
         recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
-        spriteActuel = spritesPossible[Random.Range(0, spritesPossible.Length)];
-        emplacement.position = pointArriver.transform.position;
+        //spriteActuel = spritesPossible[Random.Range(0, spritesPossible.Length)];
+        //imagePotion.sprite = recetteDemander.Sprite;
         timer = maxTimer;
+        animation.Play("Client Arriver");
         commendeFaite = false;
     }
     
+    private void FacePlayer()
+    {
+        animation.Play("Donne Commande");
+    }
+    
+    private void SetCommende()
+    {
+        commendeFaite = true;
+        //BroadcastMessage("OnOrderStarted");
+    }
     
 }
