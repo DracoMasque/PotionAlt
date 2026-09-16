@@ -81,7 +81,7 @@ public class Client : MonoBehaviour
         spriteAgace = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Agace\\" + spriteBase.name + "_Agace");
         spriteEnerve = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Enerve\\" + spriteBase.name + "_Enerve");
         clientSprite.sprite = spriteHeureu;
-        imagePotion.sprite = recetteDemander.Sprite;
+        imagePotion.sprite = recetteDemander.sprite;
         timer = maxTimer;
         animation.Play("Client Arriver");
     }

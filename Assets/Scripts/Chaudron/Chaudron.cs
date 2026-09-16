@@ -1,16 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Debug = System.Diagnostics.Debug;
 
 public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    Ingrediant[] listeIngredients;
+    List<Ingrediant> listeIngredients;
 
-    void Start()
+    private void Start()
     {
         recettes = Resources.LoadAll<Recette>("Scriptable Object/Recettes");
         gameObject.BroadcastMessage("UpdateIngredients", new string[]{"1","2","6"});
@@ -46,10 +46,12 @@ public class Chaudron : MonoBehaviour
     private void retireObjects(string id)
     {
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
+        listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     private  void AjouteObjects(string id) //Ingrediant objet
     {
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
+        listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     
     //Recup tous les id des ingredients de la scene
@@ -61,6 +63,7 @@ public class Chaudron : MonoBehaviour
         for (int i = 0; i < a.Length; i++)
         {
             idList.Append(a[i].id);
+            
         }
             
         return idList;
@@ -97,16 +100,26 @@ public class Chaudron : MonoBehaviour
     }
     //----------------UPDATE INGREDIENTS---------------
     //Quand le joueur Appuis sur un bouton pour confirmer)
-    void ConfirmeRecette()
+    public void ConfirmeRecette()
     {
         //Regarde tous les ingredients et si ça match
         //Si il y a un truc qui match 
         //Broadcast un message avec l'id ou le nom de la potion
         //OnRecetteConfirme(Recette la_recette)
+        listeIngredients.Sort();
+        for (int i = 0; i < recettes.Length; i++)
+        {
+            recettes[i].ingredients.Sort();
+            if (listeIngredients == recettes[i].ingredients)
+            {
+                gameObject.BroadcastMessage("func OnRecetteConfirme", recettes[i]);
+                Debug.Log("Recette confirmé");
+            }
+        }
     }
 
-    void GetIngredients()
+    public void OnOrderStarted()
     {
-        
+        Debug.Log("J'ai tellement oublié ce que cette fonction est sensée faire");
     }
 }
