@@ -670,6 +670,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 5067a24796883b04bbea7629f465d042, type: 2}
   - {fileID: 7400000, guid: 53dfa641d21e7a840ad596f1d9f507fd, type: 2}
+  - {fileID: 7400000, guid: 982072cc00c96d842a458706b6c55a77, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -690,9 +691,11 @@ MonoBehaviour:
   recetteDemander: {fileID: 0}
   imagePotionObject: {fileID: 957193019}
   commende: {fileID: 0}
+  clientSprite: {fileID: 0}
   timer: 0
   maxTimer: 0
   commendeFaite: 0
+  commendeFini: 0
   animation: {fileID: 1546556628}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
