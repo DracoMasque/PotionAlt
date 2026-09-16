@@ -17,7 +17,7 @@ public class Client : MonoBehaviour
     public SpriteRenderer clientSprite;
     
     public float timer;
-    public float maxTimer;
+    public float maxTimer = 30;
     
     public bool commendeFaite = false;
     public bool commendeFini = false;
@@ -64,12 +64,13 @@ public class Client : MonoBehaviour
         else if (commendeFini)
         {
             ChangeSprite(spriteHeureu);
-            
+            animation.Play("Client Part");
         }
     }
 
     private void NewClient()
     {
+        BroadcastMessage("UpdateRoundClient()");
         commendeFaite = false;
         commendeFini = false;
         Resources.UnloadAsset(spriteAgace);
@@ -100,12 +101,12 @@ public class Client : MonoBehaviour
     private void SetCommende()
     {
         commendeFaite = true;
-        //BroadcastMessage("OnOrderStarted");
+        BroadcastMessage("OnOrderStarted");
     }
     
     private void SetFini()
     {
         commendeFini = true;
-        //BroadcastMessage("AddScore", timer*10);
+        BroadcastMessage("AddScore", timer*10);
     }
 }
