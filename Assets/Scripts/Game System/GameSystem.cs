@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameSystem : MonoBehaviour
@@ -10,11 +11,28 @@ public class GameSystem : MonoBehaviour
     public int numberClientRound;
 
     private Client client;
+
+    [SerializeField] public Dictionary<string, int> listeScore = new Dictionary<string, int>();
+    
+    public static GameSystem Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         client = GameObject.Find("Client").GetComponent<Client>();
+        ScoreData scoreData = LoadSystem.LoadScore();
+        if (scoreData != null)
+        {
+            listeScore = scoreData.listeScore;
+        }
     }
 
     // Update is called once per frame
@@ -56,6 +74,8 @@ public class GameSystem : MonoBehaviour
         if (currentRound > maxRound)
         {
             //écran finish
+            SaveSystem.SaveGame();
         }
     }
+    
 }
