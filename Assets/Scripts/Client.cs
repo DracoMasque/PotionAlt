@@ -16,6 +16,7 @@ public class Client : MonoBehaviour
     public float maxTimer;
     
     public bool commendeFaite = false;
+    public bool commendeFini = false;
 
     public Animation animation;
     
@@ -33,7 +34,7 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (commendeFaite)
+        if (commendeFaite && !commendeFini)
         {
             timer -= Time.deltaTime;
         }
@@ -42,10 +43,9 @@ public class Client : MonoBehaviour
 
     private void NewClient()
     {
-        print(recettesPossible.Length);
         recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
-        //spriteActuel = spritesPossible[Random.Range(0, spritesPossible.Length)];
-        //imagePotion.sprite = recetteDemander.Sprite;
+        spriteActuel = spritesPossible[Random.Range(0, spritesPossible.Length)];
+        imagePotion.sprite = recetteDemander.Sprite;
         timer = maxTimer;
         animation.Play("Client Arriver");
         commendeFaite = false;
@@ -59,7 +59,12 @@ public class Client : MonoBehaviour
     private void SetCommende()
     {
         commendeFaite = true;
-        //BroadcastMessage("OnOrderStarted");
+        BroadcastMessage("OnOrderStarted");
     }
     
+    private void SetFini()
+    {
+        commendeFini = true;
+        BroadcastMessage("AddScore", timer*10);
+    }
 }
