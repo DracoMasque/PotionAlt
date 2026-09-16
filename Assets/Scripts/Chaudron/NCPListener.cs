@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using PCSC;
 using PCSC.Monitoring;
-
-public class LecturedePuces : MonoBehaviour
+public class NCPListener : MonoBehaviour
 {
     /*ContextFactory contextFactory = ContextFactory.Instance;
         using (var context = contextFactory.Establish(SCardScope.System)) {
@@ -39,5 +35,4 @@ public class LecturedePuces : MonoBehaviour
         //monitor.Cancel();
         //monitor.Dispose();
     }
-
 }

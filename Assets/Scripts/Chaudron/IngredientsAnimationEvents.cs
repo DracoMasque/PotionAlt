@@ -8,7 +8,7 @@ public class IngredientsAnimationEvents : MonoBehaviour
     public string id = "1";
     private void Start()
     {
-        //From ingredient scriptable, take the id
+        //From ingredient scriptable, take the id and set it
         
         //Test
         Appear();
@@ -29,13 +29,13 @@ public class IngredientsAnimationEvents : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         GetComponent<BoxCollider2D>().enabled = false;
-        Debug.Log("Disappear");
+        //Debug.Log("Disappear");
     }
     private void EnableRigidBodyComponents()
     {
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         GetComponent<BoxCollider2D>().enabled = true;
-        Debug.Log("Appear??");
+        //Debug.Log("Appear??");
     }
 
 
