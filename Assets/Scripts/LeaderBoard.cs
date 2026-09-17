@@ -14,15 +14,10 @@ public class LeaderBoard : MonoBehaviour
     {
         for (int i = 0; i < playersNames.Count; i++)
         {
-            playersNames[i] = GetComponent<TextMeshProUGUI>();
-            playersScores[i] = GetComponent<TextMeshProUGUI>();
-        }
-        
-        for (int i = 0; i < playersNames.Count; i++)
-        {
             playersNames[i].text = "---";
             playersScores[i].text = "000000";
         }
+        
     }
 
     Dictionary<string,int> SortLeader(Dictionary<string,int> numbers)

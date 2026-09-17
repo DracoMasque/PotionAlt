@@ -29,11 +29,15 @@ public class Client : MonoBehaviour
     private bool spriteChanged1 = false;
     private bool spriteChanged2 = false;
     
+    public Chaudron chaudron;
+    private GameSystem gameSystem;
+    
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
         recettesPossible = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
         spritesPossible = Resources.LoadAll<Sprite>("Visual\\Sprites\\Client\\Normal");
         clientSprite = GetComponent<SpriteRenderer>();
@@ -76,7 +80,7 @@ public class Client : MonoBehaviour
 
     private void NewClient()
     {
-        BroadcastMessage("UpdateRoundClient()");
+        gameSystem.UpdateRoundClient();
         commendeFaite = false;
         commendeFini = false;
         Resources.UnloadAsset(spriteAgace);
@@ -108,12 +112,12 @@ public class Client : MonoBehaviour
     private void SetCommende()
     {
         commendeFaite = true;
-        //BroadcastMessage("OnOrderStarted");
+        //chaudron.OnOrderStarted();
     }
     
     private void SetFini()
     {
         commendeFini = true;
-        BroadcastMessage("AddScore", timer*10);
+        gameSystem.AddScore(timer*10);
     }
 }

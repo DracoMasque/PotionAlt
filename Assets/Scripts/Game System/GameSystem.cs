@@ -53,12 +53,12 @@ public class GameSystem : MonoBehaviour
         
     }
 
-    void AddScore(float scoreClient)
+    public void AddScore(float scoreClient)
     {
         score += scoreClient;
     }
 
-    void UpdateRoundClient()
+    public void UpdateRoundClient()
     {
         if (numberClientRound > maxClientRound)
         {
