@@ -70,11 +70,13 @@ public class Client : MonoBehaviour
         if (timer <= 0 && !commendeFini)
         {
             animation.Play("Client Part");
+            timerSlider.gameObject.SetActive(false);
         }
         else if (commendeFini)
         {
             ChangeSprite(spriteHeureu);
             animation.Play("Client Part");
+            timerSlider.gameObject.SetActive(false);
         }
     }
 
@@ -112,6 +114,7 @@ public class Client : MonoBehaviour
     private void SetCommende()
     {
         commendeFaite = true;
+        timerSlider.gameObject.SetActive(true);
         //chaudron.OnOrderStarted();
     }
     
