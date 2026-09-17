@@ -44,7 +44,7 @@ public class GameSystem : MonoBehaviour
         
     }
 
-    void OnRecetteConfirme(Recette recetteJoueur)
+    public void OnRecetteConfirme(Recette recetteJoueur)
     {
         if (client.recetteDemander == recetteJoueur)
         {
@@ -77,6 +77,8 @@ public class GameSystem : MonoBehaviour
         if (currentRound > maxRound)
         {
             //écran finish
+            leaderBoard.gameObject.SetActive(true);
+            Time.timeScale = 0f;
             SaveSystem.SaveGame();
         }
     }
