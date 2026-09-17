@@ -11,6 +11,8 @@ public class GameSystem : MonoBehaviour
     public int numberClientRound;
 
     private Client client;
+    
+    public LeaderBoard leaderBoard;
 
     [SerializeField] public Dictionary<string, int> listeScore = new Dictionary<string, int>();
     
@@ -32,6 +34,7 @@ public class GameSystem : MonoBehaviour
         if (scoreData != null)
         {
             listeScore = scoreData.listeScore;
+            leaderBoard.ShowLeaderBoard(listeScore);
         }
     }
 

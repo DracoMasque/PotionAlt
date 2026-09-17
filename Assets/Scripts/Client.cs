@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class Client : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class Client : MonoBehaviour
     private bool spriteChanged1 = false;
     private bool spriteChanged2 = false;
     
+    [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,6 +38,7 @@ public class Client : MonoBehaviour
         spritesPossible = Resources.LoadAll<Sprite>("Visual\\Sprites\\Client\\Normal");
         clientSprite = GetComponent<SpriteRenderer>();
         imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
+        timerSlider = timerSlider.GetComponent<Slider>();
         NewClient();
         timer = maxTimer;
     }
@@ -41,6 +46,7 @@ public class Client : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timerSlider.value = timer;
         if (commendeFaite && !commendeFini)
         {
             timer -= Time.deltaTime;
@@ -101,7 +107,7 @@ public class Client : MonoBehaviour
     private void SetCommende()
     {
         commendeFaite = true;
-        BroadcastMessage("OnOrderStarted");
+        //BroadcastMessage("OnOrderStarted");
     }
     
     private void SetFini()
