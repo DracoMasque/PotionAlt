@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42507a43dd6503940a6c0156934e2f53, type: 3}
-  m_Name: RecetteTest
+  m_Name: "Boyau de Troll Ferment\xE9"
   m_EditorClassIdentifier: Assembly-CSharp::Recette
-  Ingrediants: []
+  name: "Boyau de Troll Ferment\xE9"
+  ingredients:
+  - {fileID: 11400000, guid: 4d8ce9713b404ae41966d98e446955c3, type: 2}
+  - {fileID: 11400000, guid: 6acb047099fe8b1499583efeae338515, type: 2}
+  - {fileID: 11400000, guid: 6bd4e2821be0d0442a46bad67f0ab71b, type: 2}
+  sprite: {fileID: 0}

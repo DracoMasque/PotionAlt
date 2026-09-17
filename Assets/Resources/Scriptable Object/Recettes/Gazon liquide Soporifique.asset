@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42507a43dd6503940a6c0156934e2f53, type: 3}
-  m_Name: test2
+  m_Name: Gazon liquide Soporifique
   m_EditorClassIdentifier: Assembly-CSharp::Recette
-  Name: 
-  Ingrediants: []
-  Sprite: {fileID: 0}
+  name: Gazon liquide Soporifique
+  ingredients:
+  - {fileID: 11400000, guid: 020b034b0d7a6674a95d4539f2e1ffc7, type: 2}
+  - {fileID: 11400000, guid: 4f44d04296b94ae42b0561cab6b8af43, type: 2}
+  - {fileID: 11400000, guid: a7d84e93a4e3e784eabbaf377da1e647, type: 2}
+  sprite: {fileID: 0}

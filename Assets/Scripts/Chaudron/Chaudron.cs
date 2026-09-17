@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,12 +9,13 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    Ingrediant[] listeIngredients;
+    private List<Ingrediant> listeIngredients;
+    private GameSystem gameSystem;
 
     void Start()
     {
-        recettes = Resources.LoadAll<Recette>("Scriptable Object/Recettes");
-        gameObject.BroadcastMessage("UpdateIngredients", new string[]{"1","2","6"});
+        recettes = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
+        gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
     }
     
     //----------------UPDATE INGREDIENTS---------------
@@ -103,6 +105,15 @@ public class Chaudron : MonoBehaviour
         //Si il y a un truc qui match 
         //Broadcast un message avec l'id ou le nom de la potion
         //OnRecetteConfirme(Recette la_recette)
+        listeIngredients.Sort();
+        foreach (Recette recette in recettes)
+        {
+            recette.ingredients.Sort();
+            if (recette.ingredients == listeIngredients)
+            {
+                gameSystem.OnRecetteConfirme(recette);
+            }
+        }
     }
 
     void GetIngredients()
