@@ -46,12 +46,13 @@ public class GameSystem : MonoBehaviour
         
     }
 
-    public void launchGame()
+    public void LancerJeu()
     {
+        print("OnLaunchGame");
         if (!gameStarted)
         {
             leaderBoard.gameObject.SetActive(false);
-            client.NewClient();
+            //client.NewClient();
             gameStarted = true;
         }
     }
@@ -60,7 +61,7 @@ public class GameSystem : MonoBehaviour
     {
         if (client.recetteDemander == recetteJoueur)
         {
-            client.commendeFini = true;
+            client.SetFini();
         }
         
     }

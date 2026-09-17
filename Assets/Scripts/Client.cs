@@ -31,6 +31,8 @@ public class Client : MonoBehaviour
     
     public Chaudron chaudron;
     private GameSystem gameSystem;
+    private float timeClientAgace;
+    private float timeClientEnerve;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     
@@ -54,13 +56,15 @@ public class Client : MonoBehaviour
             timer -= Time.deltaTime;
         }
 
-        if (timer <= maxTimer / 4 && !spriteChanged2)
+        if (timer <= maxTimer/4 && !spriteChanged2)
         {
+            print("change2");
             ChangeSprite(spriteEnerve);
             spriteChanged2 = true;
         }
-        else if (timer <= maxTimer / 2 && !spriteChanged1)
+        else if (timer <= maxTimer/2 && !spriteChanged1)
         {
+            print("change1");
             ChangeSprite(spriteAgace);
             spriteChanged1 = true;
         }
@@ -80,9 +84,12 @@ public class Client : MonoBehaviour
 
     public void NewClient()
     {
+        print("WHYYYY");
         gameSystem.UpdateRoundClient();
         commendeFaite = false;
         commendeFini = false;
+        spriteChanged1 = false;
+        spriteChanged2 = false;
         Resources.UnloadAsset(spriteAgace);
         Resources.UnloadAsset(spriteEnerve);
         Resources.UnloadAsset(spriteHeureu);
@@ -116,7 +123,7 @@ public class Client : MonoBehaviour
         //chaudron.OnOrderStarted();
     }
     
-    private void SetFini()
+    public void SetFini()
     {
         commendeFini = true;
         gameSystem.AddScore(timer*10);
