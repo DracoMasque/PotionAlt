@@ -31,8 +31,6 @@ public class Client : MonoBehaviour
     
     public Chaudron chaudron;
     private GameSystem gameSystem;
-    private float timeClientAgace;
-    private float timeClientEnerve;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     
@@ -45,6 +43,7 @@ public class Client : MonoBehaviour
         clientSprite = GetComponent<SpriteRenderer>();
         imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
         timerSlider = timerSlider.GetComponent<Slider>();
+        timer = maxTimer;
     }
 
     // Update is called once per frame
@@ -84,7 +83,7 @@ public class Client : MonoBehaviour
 
     public void NewClient()
     {
-        print("WHYYYY");
+        
         gameSystem.UpdateRoundClient();
         commendeFaite = false;
         commendeFini = false;
@@ -95,13 +94,15 @@ public class Client : MonoBehaviour
         Resources.UnloadAsset(spriteHeureu);
         recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
         spriteBase = spritesPossible[Random.Range(0, spritesPossible.Length)];
-        spriteHeureu = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Super Heureux\\" + spriteBase.name + "_Super Heureux");
+        spriteHeureu =
+            Resources.Load<Sprite>("Visual\\Sprites\\Client\\Super Heureux\\" + spriteBase.name + "_Super Heureux");
         spriteAgace = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Agace\\" + spriteBase.name + "_Agace");
         spriteEnerve = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Enerve\\" + spriteBase.name + "_Enerve");
         clientSprite.sprite = spriteHeureu;
         imagePotion.sprite = recetteDemander.sprite;
         timer = maxTimer;
         animation.Play("Client Arriver");
+        
     }
 
     private void ChangeSprite(Sprite newSprite)

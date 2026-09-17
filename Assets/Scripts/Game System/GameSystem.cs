@@ -52,7 +52,7 @@ public class GameSystem : MonoBehaviour
         if (!gameStarted)
         {
             leaderBoard.gameObject.SetActive(false);
-            //client.NewClient();
+            client.NewClient();
             gameStarted = true;
         }
     }
