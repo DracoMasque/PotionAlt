@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42507a43dd6503940a6c0156934e2f53, type: 3}
+  m_Name: "Bouillie de Cervelle Assaisonn\xE9e"
+  m_EditorClassIdentifier: Assembly-CSharp::Recette
+  name: "Bouillie de Cervelle Assaisonn\xE9e"
+  ingredients:
+  - {fileID: 11400000, guid: f589d5f184ac98c4c85f50f192cb9883, type: 2}
+  - {fileID: 11400000, guid: 4f44d04296b94ae42b0561cab6b8af43, type: 2}
+  - {fileID: 11400000, guid: 020b034b0d7a6674a95d4539f2e1ffc7, type: 2}
+  sprite: {fileID: 0}
