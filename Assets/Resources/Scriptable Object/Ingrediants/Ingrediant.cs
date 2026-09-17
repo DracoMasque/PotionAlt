@@ -5,5 +5,5 @@ using UnityEngine;
 public class Ingrediant : ScriptableObject
 {
     public string name;
-    public int uid;
+    public string uid;
 }

@@ -9,8 +9,10 @@ public class GameSystem : MonoBehaviour
 
     public int maxClientRound = 3; 
     public int numberClientRound;
+    
+    public bool  gameStarted = false;
 
-    private Client client;
+    public Client client;
     
     public LeaderBoard leaderBoard;
 
@@ -42,6 +44,16 @@ public class GameSystem : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void launchGame()
+    {
+        if (!gameStarted)
+        {
+            leaderBoard.gameObject.SetActive(false);
+            client.NewClient();
+            gameStarted = true;
+        }
     }
 
     public void OnRecetteConfirme(Recette recetteJoueur)
@@ -80,6 +92,7 @@ public class GameSystem : MonoBehaviour
             leaderBoard.gameObject.SetActive(true);
             Time.timeScale = 0f;
             SaveSystem.SaveGame();
+            gameStarted = false;
         }
     }
     

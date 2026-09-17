@@ -5,12 +5,13 @@ using UnityEngine.Rendering;
 public class IngredientsAnimationEvents : MonoBehaviour
 {
     public Ingrediant ingrediant;
-    public string id = "1";
+    public string id;
     private void Start()
     {
         //From ingredient scriptable, take the id and set it
         
         //Test
+        id = ingrediant.uid;
         Appear();
         Invoke("Disappear", 1.5f);
 

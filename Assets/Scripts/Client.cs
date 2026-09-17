@@ -43,8 +43,6 @@ public class Client : MonoBehaviour
         clientSprite = GetComponent<SpriteRenderer>();
         imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
         timerSlider = timerSlider.GetComponent<Slider>();
-        NewClient();
-        timer = maxTimer;
     }
 
     // Update is called once per frame
@@ -80,7 +78,7 @@ public class Client : MonoBehaviour
         }
     }
 
-    private void NewClient()
+    public void NewClient()
     {
         gameSystem.UpdateRoundClient();
         commendeFaite = false;

@@ -9,6 +9,9 @@ public class Chaudron : MonoBehaviour
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
     List<Ingrediant> listeIngredients;
+    
+    private GameSystem gameSystem;
+    private Recette recetteActuel = null;
 
     private void Start()
     {
@@ -43,12 +46,12 @@ public class Chaudron : MonoBehaviour
             }
         }
     }
-    private void retireObjects(string id)
+    public void retireObjects(string id)
     {
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
         listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
-    private  void AjouteObjects(string id) //Ingrediant objet
+    public void AjouteObjects(string id) //Ingrediant objet
     {
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
         listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
@@ -112,10 +115,16 @@ public class Chaudron : MonoBehaviour
             recettes[i].ingredients.Sort();
             if (listeIngredients == recettes[i].ingredients)
             {
-                gameObject.BroadcastMessage("func OnRecetteConfirme", recettes[i]);
+                recetteActuel = recettes[i];
                 Debug.Log("Recette confirmé");
             }
         }
+    }
+
+    public void Servire()
+    {
+        gameSystem.OnRecetteConfirme(recetteActuel);
+        recetteActuel = null;
     }
 
     public void OnOrderStarted()
