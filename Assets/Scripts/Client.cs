@@ -101,6 +101,7 @@ public class Client : MonoBehaviour
     private void FacePlayer()
     {
         clientSprite.sprite = spriteBase;
+        ChangeSprite(spriteBase);
         animation.Play("Donne Commande");
     }
     
