@@ -4,5 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Ingrediant", menuName = "Scriptable Objects/Ingrediant")]
 public class Ingrediant : ScriptableObject
 {
-    public string Name;
+    public string name;
+    public string uid;
 }
