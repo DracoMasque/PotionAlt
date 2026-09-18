@@ -12,8 +12,6 @@ public class IngredientsAnimationEvents : MonoBehaviour
         
         //Test
         id = ingrediant.uid;
-        Appear();
-        Invoke("Disappear", 1.5f);
 
     }
     public void Appear()

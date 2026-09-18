@@ -8,7 +8,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    List<Ingrediant> listeIngredients;
+    List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
     private Recette recetteActuel = null;
@@ -23,8 +23,8 @@ public class Chaudron : MonoBehaviour
     //Lancer cette fonction quand on reçois gameObject.BroadcastMessage("UpdateIngredients", [la liste des id]);
     void UpdateIngredients(string[] newIngredientsId)
     {
-        GameObject[] SceneObjectsList = RecupObjectsScene();
-        string[] idList = RecupIdObjectsScene();
+        List<GameObject> SceneObjectsList = RecupObjectsScene();
+        List<string> idList = RecupIdObjectsScene();
         
         //regarde chacun des newIngredientsId
         //si l'ingredient existe pas le rajouter 
@@ -38,15 +38,15 @@ public class Chaudron : MonoBehaviour
         
         //regarde chacun des idList
         //si ils sont pas sur les newIngredientsId les enlever
-        for (int i = 0; i < idList.Length; i++ )
+        for (int i = 0; i < idList.Count; i++ )
         {
             if (!newIngredientsId.Contains(idList[i]))
             {
-                retireObjects(idList[i]);
+                RetireObjects(idList[i]);
             }
         }
     }
-    public void retireObjects(string id)
+    public void RetireObjects(string id)
     {
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
         listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
@@ -58,30 +58,29 @@ public class Chaudron : MonoBehaviour
     }
     
     //Recup tous les id des ingredients de la scene
-    private string[] RecupIdObjectsScene()
+    private List<string> RecupIdObjectsScene()
     {
-        string[] idList = { };
+        List<string> idList = new List<string>();
         
         IngredientsAnimationEvents[] a = GetComponentsInChildren<IngredientsAnimationEvents>();
         for (int i = 0; i < a.Length; i++)
         {
-            idList.Append(a[i].id);
+            idList.Add(a[i].id);
             
         }
             
         return idList;
     }
     //Recup tous les ingredients de la scene
-    private GameObject[] RecupObjectsScene()
+    private List<GameObject> RecupObjectsScene()
     {
-        GameObject[] objectList = { };
+        List<GameObject> objectList = new List<GameObject>();
         
-        IngredientsAnimationEvents[] a = GetComponentsInChildren<IngredientsAnimationEvents>();
+        Component[] a = GetComponentsInChildren(typeof(IngredientsAnimationEvents), true);
         for (int i = 0; i < a.Length; i++)
         {
-            objectList.Append(a[i].gameObject);
+            objectList.Add(a[i].gameObject);
         }
-            
         return objectList;
     }
    
@@ -90,12 +89,14 @@ public class Chaudron : MonoBehaviour
     {
         GameObject objectScene = null;
         
-        GameObject[] objectSceneList = RecupObjectsScene();
-        for (int i = 0; i < objectSceneList.Length; i++)
+        List<GameObject> objectSceneList = RecupObjectsScene();
+        for (int i = 0; i < objectSceneList.Count; i++)
         {
             if (objectSceneList[i].GetComponent<IngredientsAnimationEvents>().id == id)
             {
+                print("j'ai trouver");
                 objectScene = objectSceneList[i];
+                print(objectScene.name);
             }
         }
 
