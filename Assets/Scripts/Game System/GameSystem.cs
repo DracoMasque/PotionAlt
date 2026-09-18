@@ -48,7 +48,6 @@ public class GameSystem : MonoBehaviour
 
     public void LancerJeu()
     {
-        print("OnLaunchGame");
         if (!gameStarted)
         {
             leaderBoard.gameObject.SetActive(false);

@@ -57,13 +57,11 @@ public class Client : MonoBehaviour
 
         if (timer <= maxTimer/4 && !spriteChanged2)
         {
-            print("change2");
             ChangeSprite(spriteEnerve);
             spriteChanged2 = true;
         }
         else if (timer <= maxTimer/2 && !spriteChanged1)
         {
-            print("change1");
             ChangeSprite(spriteAgace);
             spriteChanged1 = true;
         }

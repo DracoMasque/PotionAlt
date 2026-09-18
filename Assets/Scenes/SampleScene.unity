@@ -1697,9 +1697,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1353725465}
-        m_TargetAssemblyTypeName: GameSystem, Assembly-CSharp
-        m_MethodName: LancerJeu
+      - m_Target: {fileID: 1996526007}
+        m_TargetAssemblyTypeName: Chaudron, Assembly-CSharp
+        m_MethodName: Servire
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1709,9 +1709,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1996526007}
-        m_TargetAssemblyTypeName: Chaudron, Assembly-CSharp
-        m_MethodName: Servire
+      - m_Target: {fileID: 1353725465}
+        m_TargetAssemblyTypeName: GameSystem, Assembly-CSharp
+        m_MethodName: LancerJeu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8640,6 +8640,10 @@ PrefabInstance:
     - target: {fileID: 19905748464543481, guid: e084e120bc91c6c4792ea39db1b5d7f8, type: 3}
       propertyPath: m_Name
       value: Client
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692298777692446062, guid: e084e120bc91c6c4792ea39db1b5d7f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.06
       objectReference: {fileID: 0}
     - target: {fileID: 4972765968638777914, guid: e084e120bc91c6c4792ea39db1b5d7f8, type: 3}
       propertyPath: m_LocalPosition.x
