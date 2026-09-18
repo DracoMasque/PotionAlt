@@ -53,6 +53,7 @@ public class GameSystem : MonoBehaviour
             leaderBoard.gameObject.SetActive(false);
             client.NewClient();
             gameStarted = true;
+            score = 0;
         }
     }
 
@@ -75,6 +76,7 @@ public class GameSystem : MonoBehaviour
         if (numberClientRound > maxClientRound)
         {
             numberClientRound = 1;
+            UpdateRoundNumber();
             
         }
         else
@@ -91,7 +93,7 @@ public class GameSystem : MonoBehaviour
             //écran finish
             leaderBoard.gameObject.SetActive(true);
             Time.timeScale = 0f;
-            SaveSystem.SaveGame();
+            //SaveSystem.SaveGame();
             gameStarted = false;
         }
     }

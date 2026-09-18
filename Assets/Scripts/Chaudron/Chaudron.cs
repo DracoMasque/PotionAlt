@@ -136,7 +136,6 @@ public class Chaudron : MonoBehaviour
         foreach (Ingrediant ingrediant in listeIngredientsCopy)
         {
             RetireObjects(ingrediant.uid);
-            print("retire ingrediant " + ingrediant.uid);
         }
         recetteActuel = null;
     }
