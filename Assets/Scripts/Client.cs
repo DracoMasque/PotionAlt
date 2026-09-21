@@ -7,9 +7,12 @@ public class Client : MonoBehaviour
 {
     private Recette[] recettesPossible;
     public Recette recetteDemander;
-    [SerializeField] private GameObject imagePotionObject;
-    private SpriteRenderer imagePotion;
-    [SerializeField] private GameObject commende;
+    [FormerlySerializedAs("imageRecetteObject")] [FormerlySerializedAs("imagePotionObject")] [SerializeField] private GameObject recetteObject;
+    private SpriteRenderer imageRecette;
+    private Animation recetteAnimation;
+    [FormerlySerializedAs("commende")] [SerializeField] private GameObject potionObject;
+    private SpriteRenderer potionImage;
+    private Animation potionAnimation;
     
     private Sprite[] spritesPossible;
     private Sprite spriteBase;
@@ -42,7 +45,10 @@ public class Client : MonoBehaviour
         recettesPossible = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
         spritesPossible = Resources.LoadAll<Sprite>("Visual\\Sprites\\Client\\Normal");
         clientSprite = GetComponent<SpriteRenderer>();
-        imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
+        imageRecette = recetteObject.GetComponent<SpriteRenderer>();
+        recetteAnimation = recetteObject.GetComponent<Animation>();
+        potionAnimation = potionObject.GetComponent<Animation>();
+        potionImage = potionObject.GetComponent<SpriteRenderer>();
         timerSlider = timerSlider.GetComponent<Slider>();
         timer = maxTimer;
     }
@@ -103,7 +109,8 @@ public class Client : MonoBehaviour
         spriteAgace = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Agace\\" + spriteBase.name + "_Agace");
         spriteEnerve = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Enerve\\" + spriteBase.name + "_Enerve");
         clientSprite.sprite = spriteHeureux;
-        imagePotion.sprite = recetteDemander.sprite;
+        imageRecette.sprite = recetteDemander.spriteIngredient;
+        potionImage.sprite = recetteDemander.spritePotion;
         timer = maxTimer;
         animation.Play("Client Arriver");
         
@@ -118,7 +125,8 @@ public class Client : MonoBehaviour
     {
         clientSprite.sprite = spriteBase;
         ChangeSprite(spriteBase);
-        animation.Play("Donne Commande");
+        recetteAnimation.Play("Donne Commande");
+        potionAnimation.Play();
     }
     
     private void SetCommande()
