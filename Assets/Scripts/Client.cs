@@ -127,6 +127,7 @@ public class Client : MonoBehaviour
         ChangeSprite(spriteBase);
         recetteAnimation.Play("Donne Commande");
         potionAnimation.Play();
+        SetCommande();
     }
     
     private void SetCommande()
