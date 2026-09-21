@@ -13,6 +13,7 @@ public class GameSystem : MonoBehaviour
     public bool  gameStarted = false;
 
     public Client client;
+    public Chaudron chaudron;
     
     public LeaderBoard leaderBoard;
 
@@ -32,6 +33,7 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         client = GameObject.Find("Client").GetComponent<Client>();
+        chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
         if (scoreData != null)
         {
@@ -43,7 +45,10 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (client.partie && chaudron.listeIngredients.Count == 0)
+        {
+            client.NewClient();
+        }
     }
 
     public void LancerJeu()
@@ -53,6 +58,7 @@ public class GameSystem : MonoBehaviour
             leaderBoard.gameObject.SetActive(false);
             client.NewClient();
             gameStarted = true;
+            score = 0;
         }
     }
 
@@ -75,6 +81,7 @@ public class GameSystem : MonoBehaviour
         if (numberClientRound > maxClientRound)
         {
             numberClientRound = 1;
+            UpdateRoundNumber();
             
         }
         else
@@ -91,7 +98,7 @@ public class GameSystem : MonoBehaviour
             //écran finish
             leaderBoard.gameObject.SetActive(true);
             Time.timeScale = 0f;
-            SaveSystem.SaveGame();
+            //SaveSystem.SaveGame();
             gameStarted = false;
         }
     }

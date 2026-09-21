@@ -8,7 +8,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    List<Ingrediant> listeIngredients = new List<Ingrediant>();
+    public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
     private Recette recetteActuel = null;
@@ -136,7 +136,6 @@ public class Chaudron : MonoBehaviour
         foreach (Ingrediant ingrediant in listeIngredientsCopy)
         {
             RetireObjects(ingrediant.uid);
-            print("retire ingrediant " + ingrediant.uid);
         }
         recetteActuel = null;
     }

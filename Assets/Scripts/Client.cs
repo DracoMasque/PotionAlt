@@ -7,22 +7,25 @@ public class Client : MonoBehaviour
 {
     private Recette[] recettesPossible;
     public Recette recetteDemander;
-    [SerializeField] private GameObject imagePotionObject;
-    private SpriteRenderer imagePotion;
-    [SerializeField] private GameObject commende;
+    [FormerlySerializedAs("imageRecetteObject")] [FormerlySerializedAs("imagePotionObject")] [SerializeField] private GameObject recetteObject;
+    private SpriteRenderer imageRecette;
+    private Animation recetteAnimation;
+    [FormerlySerializedAs("commende")] [SerializeField] private GameObject potionObject;
+    private SpriteRenderer potionImage;
+    private Animation potionAnimation;
     
     private Sprite[] spritesPossible;
     private Sprite spriteBase;
     private Sprite spriteAgace;
     private Sprite spriteEnerve;
-    private Sprite spriteHeureu;
+    private Sprite spriteHeureux;
     public SpriteRenderer clientSprite;
     
     public float timer;
     public float maxTimer = 30;
     
-    public bool commendeFaite = false;
-    public bool commendeFini = false;
+    [FormerlySerializedAs("commendeFaite")] public bool commandeFaite = false;
+    [FormerlySerializedAs("commendeFini")] public bool commandeFini = false;
 
     public Animation animation;
     
@@ -31,6 +34,7 @@ public class Client : MonoBehaviour
     
     public Chaudron chaudron;
     private GameSystem gameSystem;
+    public bool partie=false;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     
@@ -41,7 +45,10 @@ public class Client : MonoBehaviour
         recettesPossible = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
         spritesPossible = Resources.LoadAll<Sprite>("Visual\\Sprites\\Client\\Normal");
         clientSprite = GetComponent<SpriteRenderer>();
-        imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
+        imageRecette = recetteObject.GetComponent<SpriteRenderer>();
+        recetteAnimation = recetteObject.GetComponent<Animation>();
+        potionAnimation = potionObject.GetComponent<Animation>();
+        potionImage = potionObject.GetComponent<SpriteRenderer>();
         timerSlider = timerSlider.GetComponent<Slider>();
         timer = maxTimer;
     }
@@ -50,7 +57,7 @@ public class Client : MonoBehaviour
     void Update()
     {
         timerSlider.value = timer;
-        if (commendeFaite && !commendeFini)
+        if (commandeFaite && !commandeFini)
         {
             timer -= Time.deltaTime;
         }
@@ -66,38 +73,44 @@ public class Client : MonoBehaviour
             spriteChanged1 = true;
         }
 
-        if (timer <= 0 && !commendeFini)
+        if (timer <= 0 && !commandeFini)
         {
             animation.Play("Client Part");
             timerSlider.gameObject.SetActive(false);
         }
-        else if (commendeFini)
+        else if (commandeFini)
         {
-            ChangeSprite(spriteHeureu);
+            ChangeSprite(spriteHeureux);
             animation.Play("Client Part");
             timerSlider.gameObject.SetActive(false);
         }
+    }
+
+    public void SetClientPartie()
+    {
+        partie = true;
     }
 
     public void NewClient()
     {
         
         gameSystem.UpdateRoundClient();
-        commendeFaite = false;
-        commendeFini = false;
+        commandeFaite = false;
+        commandeFini = false;
         spriteChanged1 = false;
         spriteChanged2 = false;
+        partie = false;
         Resources.UnloadAsset(spriteAgace);
         Resources.UnloadAsset(spriteEnerve);
-        Resources.UnloadAsset(spriteHeureu);
+        Resources.UnloadAsset(spriteHeureux);
         recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
         spriteBase = spritesPossible[Random.Range(0, spritesPossible.Length)];
-        spriteHeureu =
-            Resources.Load<Sprite>("Visual\\Sprites\\Client\\Super Heureux\\" + spriteBase.name + "_Super Heureux");
+        spriteHeureux = Resources.Load<Sprite>("Visual\\Sprites\\Client\\SuperHeureux\\" + spriteBase.name + "_SuperHeureux");
         spriteAgace = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Agace\\" + spriteBase.name + "_Agace");
         spriteEnerve = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Enerve\\" + spriteBase.name + "_Enerve");
-        clientSprite.sprite = spriteHeureu;
-        imagePotion.sprite = recetteDemander.sprite;
+        clientSprite.sprite = spriteHeureux;
+        imageRecette.sprite = recetteDemander.spriteIngredient;
+        potionImage.sprite = recetteDemander.spritePotion;
         timer = maxTimer;
         animation.Play("Client Arriver");
         
@@ -112,19 +125,21 @@ public class Client : MonoBehaviour
     {
         clientSprite.sprite = spriteBase;
         ChangeSprite(spriteBase);
-        animation.Play("Donne Commande");
+        recetteAnimation.Play("Donne Commande");
+        potionAnimation.Play();
+        SetCommande();
     }
     
-    private void SetCommende()
+    private void SetCommande()
     {
-        commendeFaite = true;
+        commandeFaite = true;
         timerSlider.gameObject.SetActive(true);
         //chaudron.OnOrderStarted();
     }
     
     public void SetFini()
     {
-        commendeFini = true;
+        commandeFini = true;
         gameSystem.AddScore(timer*10);
     }
 }
