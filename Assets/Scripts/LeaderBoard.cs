@@ -37,7 +37,7 @@ public class LeaderBoard : MonoBehaviour
         Dictionary<string, int> sortedScores = SortLeader(scores);
         string[] playerNames = sortedScores.Keys.ToArray();
         int[] playerScores = sortedScores.Values.ToArray();
-        for (int i = 0; i < sortedScores.Count; i++)
+        for (int i = 0; i < playerNames.Length; i++)
         {
             playersNames[i].text = playerNames[i];
             playersScores[i].text = playerScores[i].ToString();

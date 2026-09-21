@@ -8,7 +8,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    List<Ingrediant> listeIngredients = new List<Ingrediant>();
+    public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
     private Recette recetteActuel = null;
@@ -94,9 +94,7 @@ public class Chaudron : MonoBehaviour
         {
             if (objectSceneList[i].GetComponent<IngredientsAnimationEvents>().id == id)
             {
-                print("j'ai trouver");
                 objectScene = objectSceneList[i];
-                print(objectScene.name);
             }
         }
 
@@ -110,14 +108,23 @@ public class Chaudron : MonoBehaviour
         //Si il y a un truc qui match 
         //Broadcast un message avec l'id ou le nom de la potion
         //OnRecetteConfirme(Recette la_recette)
-        listeIngredients.Sort();
+        
+        //listeIngredients.Sort();
         for (int i = 0; i < recettes.Length; i++)
         {
-            recettes[i].ingredients.Sort();
-            if (listeIngredients == recettes[i].ingredients)
+            int similaire = 0;
+            int similaireObjectif = recettes[i].ingredients.Count;
+            //recettes[i].ingredients.Sort();
+            foreach (Ingrediant ingrediant in listeIngredients)
+            {
+                if (recettes[i].ingredients.Contains(ingrediant))
+                {
+                    similaire++;
+                }
+            }
+            if (similaire ==  similaireObjectif)
             {
                 recetteActuel = recettes[i];
-                Debug.Log("Recette confirmé");
             }
         }
     }
@@ -125,6 +132,11 @@ public class Chaudron : MonoBehaviour
     public void Servire()
     {
         gameSystem.OnRecetteConfirme(recetteActuel);
+        List<Ingrediant> listeIngredientsCopy = new List<Ingrediant>(listeIngredients); 
+        foreach (Ingrediant ingrediant in listeIngredientsCopy)
+        {
+            RetireObjects(ingrediant.uid);
+        }
         recetteActuel = null;
     }
 
