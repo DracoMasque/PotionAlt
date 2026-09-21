@@ -31,7 +31,7 @@ public class Client : MonoBehaviour
     
     public Chaudron chaudron;
     private GameSystem gameSystem;
-    private bool partie=false;
+    public bool partie=false;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     
@@ -93,6 +93,7 @@ public class Client : MonoBehaviour
         commandeFini = false;
         spriteChanged1 = false;
         spriteChanged2 = false;
+        partie = false;
         Resources.UnloadAsset(spriteAgace);
         Resources.UnloadAsset(spriteEnerve);
         Resources.UnloadAsset(spriteHeureux);

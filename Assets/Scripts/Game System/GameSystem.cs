@@ -45,7 +45,10 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (client.partie && chaudron.listeIngredients.Count == 0)
+        {
+            client.NewClient();
+        }
     }
 
     public void LancerJeu()
