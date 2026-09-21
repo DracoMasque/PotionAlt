@@ -13,6 +13,7 @@ public class GameSystem : MonoBehaviour
     public bool  gameStarted = false;
 
     public Client client;
+    public Chaudron chaudron;
     
     public LeaderBoard leaderBoard;
 
@@ -32,6 +33,7 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         client = GameObject.Find("Client").GetComponent<Client>();
+        chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
         if (scoreData != null)
         {
