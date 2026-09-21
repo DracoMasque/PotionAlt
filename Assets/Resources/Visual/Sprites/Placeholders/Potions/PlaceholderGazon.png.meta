@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 915b3e297d9802441bc4619694ba48da
+guid: 75343de6c731fb24996d73fbb389d0a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1636318925241012259
-    second: image3_0
+      213: -2180539320882304999
+    second: PlaceholderGazon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -98,40 +98,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image3_0
+      name: PlaceholderGazon
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 263
-        height: 459
+        x: 1418
+        y: 499
+        width: 231
+        height: 426
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3205d36946f55b610800000000000000
-      internalID: 1636318925241012259
+      spriteID: 918e9086a0b2db1e0800000000000000
+      internalID: -2180539320882304999
       vertices: []
       indices: 
       edges: []
@@ -140,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 2d366f11e9881e44e9f4fb8f2d151c62
     internalID: 0
     vertices: []
     indices: 
@@ -150,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image3_0: 1636318925241012259
+      PlaceholderGazon: -2180539320882304999
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
