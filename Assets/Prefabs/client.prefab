@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 19905748464543481}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.04, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -113,8 +113,8 @@ MonoBehaviour:
   clientSprite: {fileID: 0}
   timer: 0
   maxTimer: 30
-  commendeFaite: 0
-  commendeFini: 0
+  commandeFaite: 0
+  commandeFini: 0
   animation: {fileID: 8171436222202350053}
   chaudron: {fileID: 0}
   timerSlider: {fileID: 0}
