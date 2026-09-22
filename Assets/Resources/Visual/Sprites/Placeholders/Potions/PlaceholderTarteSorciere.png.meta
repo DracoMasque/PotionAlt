@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9544cc4718084ab4ba3166c9d526320d
+guid: 412c813921f83d247afab4a4612d634b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1208040086343421634
-    second: image_0
+      213: 5824492237227425259
+    second: PlaceholderTarteSorciere_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -98,40 +98,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image_0
+      name: PlaceholderTarteSorciere
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 266
-        height: 464
+        x: 1418
+        y: 499
+        width: 231
+        height: 426
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ce8eecde02d3c010800000000000000
-      internalID: 1208040086343421634
+      spriteID: bedf5fc84d0c4d050800000000000000
+      internalID: 5824492237227425259
       vertices: []
       indices: 
       edges: []
@@ -140,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: bc542bf00717956498c3540fdcfd7b60
     internalID: 0
     vertices: []
     indices: 
@@ -150,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image_0: 1208040086343421634
+      PlaceholderTarteSorciere: 5824492237227425259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

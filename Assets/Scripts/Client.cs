@@ -10,6 +10,7 @@ public class Client : MonoBehaviour
     [FormerlySerializedAs("imageRecetteObject")] [FormerlySerializedAs("imagePotionObject")] [SerializeField] private GameObject recetteObject;
     private SpriteRenderer imageRecette;
     private Animation recetteAnimation;
+
     [FormerlySerializedAs("commende")] [SerializeField] private GameObject potionObject;
     private SpriteRenderer potionImage;
     private Animation potionAnimation;
@@ -34,6 +35,7 @@ public class Client : MonoBehaviour
     public bool partie=false;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
+    public Image colorSlider;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -47,6 +49,9 @@ public class Client : MonoBehaviour
         potionAnimation = potionObject.GetComponent<Animation>();
         potionImage = potionObject.GetComponent<SpriteRenderer>();
         timerSlider = timerSlider.GetComponent<Slider>();
+        colorSlider = colorSlider.GetComponent<Image>();
+        colorSlider.color = Color.mediumSeaGreen;
+        
         timer = maxTimer;
     }
 
@@ -61,25 +66,31 @@ public class Client : MonoBehaviour
 
         if (timer <= maxTimer/4 && !spriteChanged2)
         {
-            ChangeSprite(clientBase.spriteHeureux);
+            ChangeSprite(clientBase.spriteEnerve);
             spriteChanged2 = true;
+            colorSlider.color = Color.red;
         }
         else if (timer <= maxTimer/2 && !spriteChanged1)
         {
             ChangeSprite(clientBase.spriteAgace);
             spriteChanged1 = true;
+            colorSlider.color = Color.orange;
         }
 
         if (timer <= 0 && !commandeFini)
         {
+            recetteAnimation.Play("RecetteOut");
             animation.Play("Client Part");
             timerSlider.gameObject.SetActive(false);
+            colorSlider.color = Color.mediumSeaGreen;
         }
         else if (commandeFini)
         {
+            recetteAnimation.Play("RecetteOut");
             ChangeSprite(clientBase.spriteHeureux);
             animation.Play("Client Part");
             timerSlider.gameObject.SetActive(false);
+            colorSlider.color = Color.mediumSeaGreen;
         }
     }
 

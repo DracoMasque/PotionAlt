@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ae2921cd9f90a784b9b15b73346491d8
+guid: b1d07dc6edcf1f8479e2dccca089d3e7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6891541253924508337
-    second: image8_0
+      213: -5164427689038380865
+    second: PlaceholderBubbleTea_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -98,40 +98,27 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image8_0
+      name: PlaceholderBubbleTea
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 260
-        height: 458
+        x: 1418
+        y: 499
+        width: 231
+        height: 426
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f4d21e41eb35c50a0800000000000000
-      internalID: -6891541253924508337
+      spriteID: fb00dae01644458b0800000000000000
+      internalID: -5164427689038380865
       vertices: []
       indices: 
       edges: []
@@ -140,7 +127,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 7b1aabbb6efaa7f4c8794eca78d3ab2d
     internalID: 0
     vertices: []
     indices: 
@@ -150,7 +137,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image8_0: -6891541253924508337
+      PlaceholderBubbleTea: -5164427689038380865
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
