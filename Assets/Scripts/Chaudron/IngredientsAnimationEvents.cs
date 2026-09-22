@@ -6,12 +6,21 @@ public class IngredientsAnimationEvents : MonoBehaviour
 {
     public Ingrediant ingrediant;
     public string id;
+    
+   
+    
     private void Start()
     {
         //From ingredient scriptable, take the id and set it
         
         //Test
-        id = ingrediant.uid;
+        {
+            id = ingrediant.uid;
+        }
+
+        {
+            AudioManager.Instance.JoueSfx(3);
+        }
 
     }
     public void Appear()
@@ -36,6 +45,5 @@ public class IngredientsAnimationEvents : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         //Debug.Log("Appear??");
     }
-
-
+    
 }
