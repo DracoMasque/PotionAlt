@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AltControllerSettings;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,12 +12,16 @@ public class Chaudron : MonoBehaviour
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
+    private InputReader inputReader;
     private Recette recetteActuel = null;
 
+    private IngredientsAnimationEvents[] a;
     private void Start()
     {
         recettes = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        GetComponentInChildren<NfcReaderManager>()._chaudronComponent = GetComponent<Chaudron>();
+        a = GetComponentsInChildren<IngredientsAnimationEvents>();
     }
     
     //----------------UPDATE INGREDIENTS---------------
@@ -48,11 +53,13 @@ public class Chaudron : MonoBehaviour
     }
     public void RetireObjects(string id)
     {
+        Debug.Log(id +" Retire objets");
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
         listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
+        Debug.Log(id + " Ajoute Objet");
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
         listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
@@ -62,7 +69,6 @@ public class Chaudron : MonoBehaviour
     {
         List<string> idList = new List<string>();
         
-        IngredientsAnimationEvents[] a = GetComponentsInChildren<IngredientsAnimationEvents>();
         for (int i = 0; i < a.Length; i++)
         {
             idList.Add(a[i].id);
@@ -76,7 +82,6 @@ public class Chaudron : MonoBehaviour
     {
         List<GameObject> objectList = new List<GameObject>();
         
-        Component[] a = GetComponentsInChildren(typeof(IngredientsAnimationEvents), true);
         for (int i = 0; i < a.Length; i++)
         {
             objectList.Add(a[i].gameObject);

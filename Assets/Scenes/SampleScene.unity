@@ -6445,6 +6445,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8401859665054583278, guid: 89f76179d2bf47e41b38550a65d57dc4, type: 3}
   m_PrefabInstance: {fileID: 1945547542}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1477501476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477501477}
+  - component: {fileID: 1477501478}
+  m_Layer: 0
+  m_Name: NfcReaderManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477501477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477501476}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.725, z: 0}
+  m_LocalScale: {x: 0.625, y: 0.625, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1996526009}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1477501478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477501476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c877dbb25aa1834894ce2996c7c4f44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AltControllerSettings.NfcReaderManager
 --- !u!1 &1596652963
 GameObject:
   m_ObjectHideFlags: 0
@@ -7958,6 +8002,9 @@ PrefabInstance:
     - {fileID: 698355323982481687, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
     - {fileID: 7299070232615003264, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8304959125915249690, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1477501477}
     - targetCorrespondingSourceObject: {fileID: 9201154377954551188, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1454359042}
@@ -8001,6 +8048,11 @@ MonoBehaviour:
 --- !u!4 &1996526008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9201154377954551188, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
+  m_PrefabInstance: {fileID: 1996526006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1996526009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8304959125915249690, guid: 714b43d7828a6b440a1f393cb78fe434, type: 3}
   m_PrefabInstance: {fileID: 1996526006}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2021419570
