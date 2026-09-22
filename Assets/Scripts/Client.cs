@@ -37,6 +37,8 @@ public class Client : MonoBehaviour
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
     public Image colorSlider;
     
+    private AudioManager audioManager;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,6 +50,7 @@ public class Client : MonoBehaviour
         recetteAnimation = recetteObject.GetComponent<Animation>();
         potionAnimation = potionObject.GetComponent<Animation>();
         potionImage = potionObject.GetComponent<SpriteRenderer>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         timerSlider = timerSlider.GetComponent<Slider>();
         colorSlider = colorSlider.GetComponent<Image>();
         colorSlider.color = Color.mediumSeaGreen;
@@ -67,12 +70,14 @@ public class Client : MonoBehaviour
         if (timer <= maxTimer/4 && !spriteChanged2)
         {
             ChangeSprite(clientBase.spriteEnerve);
+            audioManager.JoueSfx(clientBase.audioEnerve);
             spriteChanged2 = true;
             colorSlider.color = Color.red;
         }
         else if (timer <= maxTimer/2 && !spriteChanged1)
         {
             ChangeSprite(clientBase.spriteAgace);
+            audioManager.JoueSfx(clientBase.audioAgace);
             spriteChanged1 = true;
             colorSlider.color = Color.orange;
         }
@@ -81,6 +86,7 @@ public class Client : MonoBehaviour
         {
             recetteAnimation.Play("RecetteOut");
             animation.Play("Client Part");
+            audioManager.JoueSfx(clientBase.audioHeureux);
             timerSlider.gameObject.SetActive(false);
             colorSlider.color = Color.mediumSeaGreen;
         }
