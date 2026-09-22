@@ -18,10 +18,10 @@ public static class SaveSystem
 [System.Serializable]
 public class ScoreData
 {
-   [SerializeField] public Dictionary<string, int> listeScore;
+   [SerializeField] public List<float> listeScore;
    
    public ScoreData()
    {
-       listeScore = new Dictionary<string, int>();
+       listeScore = new List<float>();
    }
 }

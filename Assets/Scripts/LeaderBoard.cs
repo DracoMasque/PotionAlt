@@ -7,41 +7,35 @@ using UnityEngine.InputSystem;
 public class LeaderBoard : MonoBehaviour
 
 {
-    public List<TextMeshProUGUI> playersNames;
     public List<TextMeshProUGUI> playersScores;
+    public TextMeshProUGUI yourScore;
 
     void Start()
     {
-        for (int i = 0; i < playersNames.Count; i++)
+        for (int i = 0; i < playersScores.Count; i++)
         {
-            playersNames[i].text = "---";
             playersScores[i].text = "000000";
         }
+        yourScore.text = "";
         
     }
 
-    Dictionary<string,int> SortLeader(Dictionary<string,int> numbers)
+    List<float> SortLeader(List<float> numbers)
     {
-        
-        numbers.OrderBy(key => key.Value);
-        
-        foreach (int number in numbers.Values)
-        {
-            print(number);
-        }
+        numbers.Sort((a, b) => a.CompareTo(b));
         return numbers;
     }
 
-    public void ShowLeaderBoard(Dictionary<string,int> scores)
+    public void ShowLeaderBoard(List<float> scores, float actualScore)
     {
-        Dictionary<string, int> sortedScores = SortLeader(scores);
-        string[] playerNames = sortedScores.Keys.ToArray();
-        int[] playerScores = sortedScores.Values.ToArray();
-        for (int i = 0; i < playerNames.Length; i++)
+        List<float> sortedScores = SortLeader(scores);
+        float[] playerScores = sortedScores.ToArray();
+        for (int i = 0; i < playersScores.Count; i++)
         {
-            playersNames[i].text = playerNames[i];
             playersScores[i].text = playerScores[i].ToString();
         }
+
+        yourScore.text = actualScore.ToString();
     }
 
 }

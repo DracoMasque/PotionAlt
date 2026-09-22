@@ -102,7 +102,7 @@ public class Chaudron : MonoBehaviour
     }
     //----------------UPDATE INGREDIENTS---------------
     //Quand le joueur Appuis sur un bouton pour confirmer)
-    public void ConfirmeRecette()
+    public Recette ConfirmeRecette()
     {
         //Regarde tous les ingredients et si ça match
         //Si il y a un truc qui match 
@@ -124,19 +124,16 @@ public class Chaudron : MonoBehaviour
             }
             if (similaire ==  similaireObjectif)
             {
-                recetteActuel = recettes[i];
+                return recettes[i];
             }
         }
+        return null;
     }
 
     public void Servire()
     {
         gameSystem.OnRecetteConfirme(recetteActuel);
-        List<Ingrediant> listeIngredientsCopy = new List<Ingrediant>(listeIngredients); 
-        foreach (Ingrediant ingrediant in listeIngredientsCopy)
-        {
-            RetireObjects(ingrediant.uid);
-        }
+        
         recetteActuel = null;
     }
 
