@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +18,11 @@ public class GameSystem : MonoBehaviour
     
     public LeaderBoard leaderBoard;
 
-    [SerializeField] public Dictionary<string, int> listeScore = new Dictionary<string, int>();
+    public List<float> listeScore = new List<float>();
     
     public static GameSystem Instance;
+    private Melange melange;
+    private float timerMelange;
 
     void Awake()
     {
@@ -35,10 +38,11 @@ public class GameSystem : MonoBehaviour
         client = GameObject.Find("Client").GetComponent<Client>();
         chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
+        melange = GetComponent<Melange>();
         if (scoreData != null)
         {
             listeScore = scoreData.listeScore;
-            leaderBoard.ShowLeaderBoard(listeScore);
+            leaderBoard.ShowLeaderBoard(listeScore,0f);
         }
     }
 
@@ -49,17 +53,36 @@ public class GameSystem : MonoBehaviour
         {
             client.NewClient();
         }
+
+        if (melange.rotationNumber == 3 && timerMelange != 0)
+        {
+            chaudron.Servire();
+        }
+        else if (melange.rotationNumber <= 2)
+        {
+            timerMelange = 0.5f;
+        }
+
+        if (timerMelange > 0)
+        {
+            timerMelange -= Time.deltaTime;
+        }
+
+        if (melange.rotationNumber > 0 && !gameStarted)
+        {
+            LancerJeu();
+        }
+        
     }
 
     public void LancerJeu()
     {
-        if (!gameStarted)
-        {
-            leaderBoard.gameObject.SetActive(false);
-            client.NewClient();
-            gameStarted = true;
-            score = 0;
-        }
+        
+        leaderBoard.gameObject.SetActive(false);
+        client.NewClient();
+        gameStarted = true;
+        score = 0;
+        
     }
 
     public void OnRecetteConfirme(Recette recetteJoueur)
@@ -73,7 +96,7 @@ public class GameSystem : MonoBehaviour
 
     public void AddScore(float scoreClient)
     {
-        score += scoreClient;
+        score += MathF.Round(scoreClient);
     }
 
     public void UpdateRoundClient()
@@ -98,7 +121,7 @@ public class GameSystem : MonoBehaviour
             //écran finish
             leaderBoard.gameObject.SetActive(true);
             Time.timeScale = 0f;
-            //SaveSystem.SaveGame();
+            SaveSystem.SaveGame();
             gameStarted = false;
         }
     }
