@@ -147,6 +147,6 @@ public class Client : MonoBehaviour
     public void SetFini()
     {
         commandeFini = true;
-        gameSystem.AddScore(timer*10);
+        gameSystem.AddScore(timer*100);
     }
 }
