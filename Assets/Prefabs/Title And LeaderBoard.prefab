@@ -914,7 +914,7 @@ MonoBehaviour:
   - {fileID: 7555979342738760485}
   - {fileID: 971550753807441487}
   - {fileID: 2112477203869848311}
-  yourScore: {fileID: 0}
+  yourScore: {fileID: 3774207914791488212}
 --- !u!1 &8024181517687806164
 GameObject:
   m_ObjectHideFlags: 0

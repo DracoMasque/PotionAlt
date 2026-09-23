@@ -38,6 +38,7 @@ public class Client : MonoBehaviour
     public Image colorSlider;
     
     private AudioManager audioManager;
+    private bool playedOutPlayed = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,15 +83,15 @@ public class Client : MonoBehaviour
             colorSlider.color = Color.orange;
         }
 
-        if (timer <= 0 && !commandeFini)
+        if (timer <= 0 && !commandeFini && !playedOutPlayed)
         {
             recetteAnimation.Play("RecetteOut");
             animation.Play("Client Part");
-            audioManager.JoueSfx(clientBase.audioHeureux);
+            audioManager.JoueSfx(clientBase.audioEnerve);
             timerSlider.gameObject.SetActive(false);
             colorSlider.color = Color.mediumSeaGreen;
         }
-        else if (commandeFini)
+        else if (commandeFini && !playedOutPlayed)
         {
             recetteAnimation.Play("RecetteOut");
             ChangeSprite(clientBase.spriteHeureux);

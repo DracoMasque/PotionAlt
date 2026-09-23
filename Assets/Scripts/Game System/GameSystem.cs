@@ -54,30 +54,29 @@ public class GameSystem : MonoBehaviour
     {
         if (client.partie && chaudron.listeIngredients.Count == 0)
         {
+            print("je veux venir");
             client.NewClient();
         }
 
-        if (melange.rotationNumber == 3 && melange.timerMelange != 0)
+        if (melange.rotationNumber > 3)
         {
-            chaudron.Servire();
             melange.rotationNumber = 0;
-        }
-        else if (melange.rotationNumber <= 2 && melange.rotationNumber > 0)
-        {
-            
+            chaudron.Servire();
+            print("je veux servire");
         }
 
         if (melange.timerMelange > 0)
         {
             melange.timerMelange -= Time.deltaTime;
         }
-        else if (melange.timerMelange <= 0)
+        else if (melange.timerMelange < 0)
         {
             melange.rotationNumber = 0;
         }
 
         if (melange.rotationNumber > 0 && !gameStarted)
         {
+            print("je lance");
             LancerJeu();
         }
         

@@ -12,7 +12,6 @@ public class Chaudron : MonoBehaviour
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
-    private InputReader inputReader;
     private Recette recetteActuel = null;
 
     private IngredientsAnimationEvents[] a;
@@ -137,8 +136,8 @@ public class Chaudron : MonoBehaviour
 
     public void Servire()
     {
+        recetteActuel = ConfirmeRecette();
         gameSystem.OnRecetteConfirme(recetteActuel);
-        
         recetteActuel = null;
     }
 

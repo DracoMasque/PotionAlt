@@ -28,7 +28,6 @@ public class Melange : MonoBehaviour
         { 
             Rotate(stickAction.ReadValue<Vector2>());  
         }
-        print(rotation);
 
         if (rotation >= 180f)
         {

@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Client
   recetteDemander: {fileID: 0}
-  imagePotionObject: {fileID: 0}
-  commende: {fileID: 0}
+  recetteObject: {fileID: 0}
+  potionObject: {fileID: 0}
   clientSprite: {fileID: 0}
   timer: 0
   maxTimer: 30
@@ -118,6 +118,7 @@ MonoBehaviour:
   chaudron: {fileID: 0}
   partie: 0
   timerSlider: {fileID: 0}
+  colorSlider: {fileID: 0}
 --- !u!111 &8171436222202350053
 Animation:
   m_ObjectHideFlags: 0
