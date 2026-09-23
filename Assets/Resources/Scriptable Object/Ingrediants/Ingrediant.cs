@@ -5,6 +5,6 @@ using UnityEngine;
 public class Ingrediant : ScriptableObject
 {
     public string name;
-    public string uid;
+    public List<string> uid;
     public Sprite sprite;
 }

@@ -9,7 +9,6 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    [SerializeField] private string quitId = "C4-A7-CC-F1";
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
@@ -29,15 +28,18 @@ public class Chaudron : MonoBehaviour
     void UpdateIngredients(string[] newIngredientsId)
     {
         List<GameObject> SceneObjectsList = RecupObjectsScene();
-        List<string> idList = RecupIdObjectsScene();
+        List<List<string>> idList = RecupIdObjectsScene();
         
         //regarde chacun des newIngredientsId
         //si l'ingredient existe pas le rajouter 
         for (int i = 0; i < newIngredientsId.Length; i++)
         {
-            if (idList.Contains(newIngredientsId[i]))
+            foreach (List<string>  id in idList)
             {
-                AjouteObjects(newIngredientsId[i]);
+                if (id.Contains(newIngredientsId[i]))
+                {
+                    AjouteObjects(newIngredientsId[i]);
+                }
             }
         }
         
@@ -45,47 +47,36 @@ public class Chaudron : MonoBehaviour
         //si ils sont pas sur les newIngredientsId les enlever
         for (int i = 0; i < idList.Count; i++ )
         {
-            if (!newIngredientsId.Contains(idList[i]))
+            for (int j = 0; j < idList[i].Count; j++)
             {
-                RetireObjects(idList[i]);
+                if (!newIngredientsId.Contains(idList[i][j]))
+                {
+                    RetireObjects(idList[i][j]);
+                }
             }
         }
     }
     public void RetireObjects(string id)
     {
-        if (id != quitId)
-        {
-            Debug.Log(id +" Retire objets");
-            TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
-            listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
-        }
+        Debug.Log(id +" Retire objets");
+        TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
+        listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
-        if (id == quitId)
-        {
-            #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-            #endif
-            Application.Quit();
-        }
-        else if (id != quitId)
-        {
-            Debug.Log(id + " Ajoute Objet");
-            TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
-            listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
-        }
+        Debug.Log(id + " Ajoute Objet");
+        TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
+        listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     
     //Recup tous les id des ingredients de la scene
-    private List<string> RecupIdObjectsScene()
+    private List<List<string>> RecupIdObjectsScene()
     {
-        List<string> idList = new List<string>();
+        List<List<string>> idList = new List<List<string>>();
         
         for (int i = 0; i < a.Length; i++)
         {
             idList.Add(a[i].id);
-            
         }
             
         return idList;
@@ -110,10 +101,14 @@ public class Chaudron : MonoBehaviour
         List<GameObject> objectSceneList = RecupObjectsScene();
         for (int i = 0; i < objectSceneList.Count; i++)
         {
-            if (objectSceneList[i].GetComponent<IngredientsAnimationEvents>().id == id)
+            foreach (string idObj in objectSceneList[i].GetComponent<IngredientsAnimationEvents>().id)
             {
-                objectScene = objectSceneList[i];
+                if (idObj == id)
+                {
+                    objectScene = objectSceneList[i];
+                }  
             }
+            
         }
 
         return objectScene;
