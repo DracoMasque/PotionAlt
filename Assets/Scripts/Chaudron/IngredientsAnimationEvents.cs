@@ -6,6 +6,7 @@ public class IngredientsAnimationEvents : MonoBehaviour
 {
     public Ingrediant ingrediant;
     public string id;
+    private AudioManager audioManager;
     
    
     
@@ -17,10 +18,7 @@ public class IngredientsAnimationEvents : MonoBehaviour
         {
             id = ingrediant.uid;
         }
-
-        {
-            AudioManager.Instance.JoueSfx(3);
-        }
+        audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
 
     }
     public void Appear()
@@ -45,5 +43,9 @@ public class IngredientsAnimationEvents : MonoBehaviour
         GetComponent<BoxCollider2D>().enabled = true;
         //Debug.Log("Appear??");
     }
-    
+
+    private void JouePlouf()
+    {
+        audioManager.JoueSfx(0);
+    }
 }

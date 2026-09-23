@@ -38,6 +38,10 @@ public class GameSystem : MonoBehaviour
         chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
         melange = GetComponent<Melange>();
+        FindObjectOfType<AudioManager>().JoueMusic(0,1);
+       
+    
+      
         if (scoreData != null)
         {
             listeScore = scoreData.listeScore;
