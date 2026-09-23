@@ -85,6 +85,7 @@ public class Client : MonoBehaviour
 
         if (timer <= 0 && !commandeFini && !playedOutPlayed)
         {
+            playedOutPlayed = true;
             recetteAnimation.Play("RecetteOut");
             animation.Play("Client Part");
             audioManager.JoueSfx(clientBase.audioEnerve);
@@ -93,6 +94,7 @@ public class Client : MonoBehaviour
         }
         else if (commandeFini && !playedOutPlayed)
         {
+            playedOutPlayed = true;
             recetteAnimation.Play("RecetteOut");
             ChangeSprite(clientBase.spriteHeureux);
             animation.Play("Client Part");
@@ -108,20 +110,23 @@ public class Client : MonoBehaviour
 
     public void NewClient()
     {
-        
-        gameSystem.UpdateRoundClient();
-        commandeFaite = false;
-        commandeFini = false;
-        spriteChanged1 = false;
-        spriteChanged2 = false;
-        partie = false;
-        recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
-        clientBase = clientPossible[Random.Range(0, clientPossible.Length)];
-        clientSprite.sprite = clientBase.spriteHeureux;
-        imageRecette.sprite = recetteDemander.spriteIngredient;
-        potionImage.sprite = recetteDemander.spritePotion;
-        timer = maxTimer;
-        animation.Play("Client Arriver");
+        if (!gameSystem.gameStarted)
+        {
+            gameSystem.UpdateRoundClient();
+            playedOutPlayed = false;
+            commandeFaite = false;
+            commandeFini = false;
+            spriteChanged1 = false;
+            spriteChanged2 = false;
+            partie = false;
+            recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
+            clientBase = clientPossible[Random.Range(0, clientPossible.Length)];
+            clientSprite.sprite = clientBase.spriteHeureux;
+            imageRecette.sprite = recetteDemander.spriteIngredient;
+            potionImage.sprite = recetteDemander.spritePotion;
+            timer = maxTimer;
+            animation.Play("Client Arriver");
+        }
         
     }
 

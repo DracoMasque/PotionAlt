@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Melange
   rotationNumber: 0
+  timerMelange: 0
 --- !u!114 &6298974442640189146
 MonoBehaviour:
   m_ObjectHideFlags: 0

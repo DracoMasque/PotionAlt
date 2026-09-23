@@ -54,7 +54,6 @@ public class GameSystem : MonoBehaviour
     {
         if (client.partie && chaudron.listeIngredients.Count == 0)
         {
-            print("je veux venir");
             client.NewClient();
         }
 
@@ -62,7 +61,6 @@ public class GameSystem : MonoBehaviour
         {
             melange.rotationNumber = 0;
             chaudron.Servire();
-            print("je veux servire");
         }
 
         if (melange.timerMelange > 0)
@@ -76,7 +74,6 @@ public class GameSystem : MonoBehaviour
 
         if (melange.rotationNumber > 0 && !gameStarted)
         {
-            print("je lance");
             LancerJeu();
         }
         
@@ -84,10 +81,9 @@ public class GameSystem : MonoBehaviour
 
     public void LancerJeu()
     {
-        
         leaderBoard.gameObject.SetActive(false);
-        client.NewClient();
         gameStarted = true;
+        client.NewClient();
         score = 0;
         
     }
@@ -127,11 +123,10 @@ public class GameSystem : MonoBehaviour
     void UpdateRoundNumber()
     {
         currentRound++;
-        if (currentRound > maxRound)
+        if (currentRound > maxRound-1)
         {
             //écran finish
             leaderBoard.gameObject.SetActive(true);
-            Time.timeScale = 0f;
             SaveSystem.SaveGame();
             gameStarted = false;
         }
