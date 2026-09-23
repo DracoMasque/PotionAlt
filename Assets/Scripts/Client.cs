@@ -110,7 +110,7 @@ public class Client : MonoBehaviour
 
     public void NewClient()
     {
-        if (!gameSystem.gameStarted)
+        if (gameSystem.gameStarted)
         {
             gameSystem.UpdateRoundClient();
             playedOutPlayed = false;
