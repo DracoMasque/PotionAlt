@@ -17,6 +17,6 @@ MonoBehaviour:
   spriteAgace: {fileID: -7375017402866047355, guid: 32064ebc954c94b4c93f9d1453fff567, type: 3}
   spriteEnerve: {fileID: 3267265486034524500, guid: ec80a07489de3994284cc464370d9ebd, type: 3}
   spriteHeureux: {fileID: -4417787116344318242, guid: a75cfa3b90dfeda4684f78dc47754286, type: 3}
-  audioAgace: {fileID: 0}
-  audioEnerve: {fileID: 0}
-  audioHeureux: {fileID: 0}
+  audioAgace: {fileID: 8300000, guid: b8f71822d10844d438e397033e95e99e, type: 3}
+  audioEnerve: {fileID: 8300000, guid: bda598bc584e0d440933d23ba7d6416a, type: 3}
+  audioHeureux: {fileID: 8300000, guid: dd58179d8b772054ea4ef01e602eb70a, type: 3}

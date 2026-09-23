@@ -35,7 +35,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip[] MusicFichier;
 
     [SerializeField] private AudioSource SfxAudioSource;
-    [SerializeField] private AudioSource MusicAudioSource;
+    [SerializeField] private AudioSource MusicAudioSource1;
+    [SerializeField] private AudioSource MusicAudioSource2;
 
     private void Awake()
     {
@@ -68,14 +69,13 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void JoueMusic(int valeur)
+    public void JoueMusic(int valeur1, int valeur2)
     {
-        if(valeur < 0 || valeur >= MusicFichier.Length)
-        {
-            MusicAudioSource.Pause();
-            return;
-        }
-        MusicAudioSource.clip = MusicFichier[valeur];
-        MusicAudioSource.Play();
+        
+        MusicAudioSource1.clip = MusicFichier[valeur1];
+        MusicAudioSource1.Play();
+        
+        MusicAudioSource2.clip = MusicFichier[valeur2];
+        MusicAudioSource2.Play();
     }
 }
