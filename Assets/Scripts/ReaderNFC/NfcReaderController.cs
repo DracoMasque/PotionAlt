@@ -56,12 +56,14 @@ namespace AltControllerSettings
             _monitor.CardRemoved += OnCardRemoved;
             foreach (var readerName in readerNames)
             {
-                _monitor.Start(readerName);
+                print(readerName + " started");
+                _monitor.Start(readerNames);
             }
         }
 
         private void OnCardInserted(object sender, CardStatusEventArgs eventArgs)
         {
+            print("help???");
             try
             {
                 using var context = ContextFactory.Instance.Establish(SCardScope.System);
@@ -73,8 +75,8 @@ namespace AltControllerSettings
                 if (uid == null)
                     return;
 
-                current_uid = BitConverter.ToString(uid);
-                _mainThreadContext.Post(_ => { Debug.Log("tya une carte de détectée : bip " + current_uid); }, null);
+                current_uid1 = BitConverter.ToString(uid);
+                _mainThreadContext.Post(_ => { Debug.Log("tya une carte de détectée : bip " + current_uid1); }, null);
             }
             catch (RemovedCardException exception)
             {
@@ -86,7 +88,7 @@ namespace AltControllerSettings
             }
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid);}, null);
+                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid1);}, null);
                 //_chaudronComponent.AjouteObjects(current_uid);
             }
         }
@@ -96,7 +98,7 @@ namespace AltControllerSettings
             _mainThreadContext.Post(_ => { Debug.Log("tya pas une carte de détectée : pas-bip "); }, null);
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid);}, null);
+                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid1);}, null);
             }
             
         }
