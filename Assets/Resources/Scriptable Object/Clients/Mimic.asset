@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca8976564da78834b9d30c018fbb53d7, type: 3}
+  m_Name: Mimic
+  m_EditorClassIdentifier: Assembly-CSharp::ClientOject
+  nom: Mimic
+  spriteBase: {fileID: -1457808011137041354, guid: f75a8f67768d6a04bb081dae96cf9d68, type: 3}
+  spriteAgace: {fileID: 4752578737138906026, guid: 630e2d8da101e774798e6ceba3a5c4b7, type: 3}
+  spriteEnerve: {fileID: -7119879269611506752, guid: 50a141309a5c8324385eb6e7fd92ed34, type: 3}
+  spriteHeureux: {fileID: -4057662192736093837, guid: 6663c0b0cbec3c64893d8e695154afe0, type: 3}
+  audioAgace: {fileID: 0}
+  audioEnerve: {fileID: 0}
+  audioHeureux: {fileID: 0}
