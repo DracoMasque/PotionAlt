@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +14,15 @@ public class GameSystem : MonoBehaviour
     public bool  gameStarted = false;
 
     public Client client;
+    public Chaudron chaudron;
     
     public LeaderBoard leaderBoard;
 
-    [SerializeField] public Dictionary<string, int> listeScore = new Dictionary<string, int>();
+    public List<float> listeScore = new List<float>();
     
     public static GameSystem Instance;
+    private Melange melange;
+    private float timerMelange;
 
     void Awake()
     {
@@ -32,29 +36,53 @@ public class GameSystem : MonoBehaviour
     void Start()
     {
         client = GameObject.Find("Client").GetComponent<Client>();
+        chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
+        melange = GetComponent<Melange>();
         if (scoreData != null)
         {
             listeScore = scoreData.listeScore;
-            leaderBoard.ShowLeaderBoard(listeScore);
+            leaderBoard.ShowLeaderBoard(listeScore,0f);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (client.partie && chaudron.listeIngredients.Count == 0)
+        {
+            client.NewClient();
+        }
+
+        if (melange.rotationNumber == 3 && timerMelange != 0)
+        {
+            chaudron.Servire();
+        }
+        else if (melange.rotationNumber <= 2)
+        {
+            timerMelange = 0.5f;
+        }
+
+        if (timerMelange > 0)
+        {
+            timerMelange -= Time.deltaTime;
+        }
+
+        if (melange.rotationNumber > 0 && !gameStarted)
+        {
+            LancerJeu();
+        }
         
     }
 
     public void LancerJeu()
     {
-        print("OnLaunchGame");
-        if (!gameStarted)
-        {
-            leaderBoard.gameObject.SetActive(false);
-            client.NewClient();
-            gameStarted = true;
-        }
+        
+        leaderBoard.gameObject.SetActive(false);
+        client.NewClient();
+        gameStarted = true;
+        score = 0;
+        
     }
 
     public void OnRecetteConfirme(Recette recetteJoueur)
@@ -63,12 +91,16 @@ public class GameSystem : MonoBehaviour
         {
             client.SetFini();
         }
+        else if (recetteJoueur != null)
+        {
+            score -= 500;
+        }
         
     }
 
     public void AddScore(float scoreClient)
     {
-        score += scoreClient;
+        score += MathF.Round(scoreClient);
     }
 
     public void UpdateRoundClient()
@@ -76,6 +108,7 @@ public class GameSystem : MonoBehaviour
         if (numberClientRound > maxClientRound)
         {
             numberClientRound = 1;
+            UpdateRoundNumber();
             
         }
         else

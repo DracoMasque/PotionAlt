@@ -17,4 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d8ce9713b404ae41966d98e446955c3, type: 2}
   - {fileID: 11400000, guid: 6acb047099fe8b1499583efeae338515, type: 2}
   - {fileID: 11400000, guid: 6bd4e2821be0d0442a46bad67f0ab71b, type: 2}
-  sprite: {fileID: 0}
+  spriteIngredient: {fileID: 21300000, guid: 9544cc4718084ab4ba3166c9d526320d, type: 3}
+  spritePotion: {fileID: 2788200772488634035, guid: 310daaa76ffc4464e9501505eb8ea1ea, type: 3}

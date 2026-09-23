@@ -6,5 +6,6 @@ public class Recette : ScriptableObject
 {
     public string name;
     public List<Ingrediant> ingredients;
-    public Sprite sprite;
+    public Sprite spriteIngredient;
+    public Sprite spritePotion;
 }

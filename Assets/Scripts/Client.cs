@@ -7,22 +7,23 @@ public class Client : MonoBehaviour
 {
     private Recette[] recettesPossible;
     public Recette recetteDemander;
-    [SerializeField] private GameObject imagePotionObject;
-    private SpriteRenderer imagePotion;
-    [SerializeField] private GameObject commende;
+    [FormerlySerializedAs("imageRecetteObject")] [FormerlySerializedAs("imagePotionObject")] [SerializeField] private GameObject recetteObject;
+    private SpriteRenderer imageRecette;
+    private Animation recetteAnimation;
+
+    [FormerlySerializedAs("commende")] [SerializeField] private GameObject potionObject;
+    private SpriteRenderer potionImage;
+    private Animation potionAnimation;
     
-    private Sprite[] spritesPossible;
-    private Sprite spriteBase;
-    private Sprite spriteAgace;
-    private Sprite spriteEnerve;
-    private Sprite spriteHeureu;
+    private ClientOject[] clientPossible;
+    private ClientOject clientBase;
     public SpriteRenderer clientSprite;
     
     public float timer;
     public float maxTimer = 30;
     
-    public bool commendeFaite = false;
-    public bool commendeFini = false;
+    [FormerlySerializedAs("commendeFaite")] public bool commandeFaite = false;
+    [FormerlySerializedAs("commendeFini")] public bool commandeFini = false;
 
     public Animation animation;
     
@@ -31,18 +32,29 @@ public class Client : MonoBehaviour
     
     public Chaudron chaudron;
     private GameSystem gameSystem;
+    public bool partie=false;
     
     [FormerlySerializedAs("TimerSlider")] public Slider timerSlider;
+    public Image colorSlider;
+    
+    private AudioManager audioManager;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
         recettesPossible = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
-        spritesPossible = Resources.LoadAll<Sprite>("Visual\\Sprites\\Client\\Normal");
+        clientPossible = Resources.LoadAll<ClientOject>("Scriptable Object\\Clients");
         clientSprite = GetComponent<SpriteRenderer>();
-        imagePotion = imagePotionObject.GetComponent<SpriteRenderer>();
+        imageRecette = recetteObject.GetComponent<SpriteRenderer>();
+        recetteAnimation = recetteObject.GetComponent<Animation>();
+        potionAnimation = potionObject.GetComponent<Animation>();
+        potionImage = potionObject.GetComponent<SpriteRenderer>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         timerSlider = timerSlider.GetComponent<Slider>();
+        colorSlider = colorSlider.GetComponent<Image>();
+        colorSlider.color = Color.mediumSeaGreen;
+        
         timer = maxTimer;
     }
 
@@ -50,56 +62,63 @@ public class Client : MonoBehaviour
     void Update()
     {
         timerSlider.value = timer;
-        if (commendeFaite && !commendeFini)
+        if (commandeFaite && !commandeFini)
         {
             timer -= Time.deltaTime;
         }
 
         if (timer <= maxTimer/4 && !spriteChanged2)
         {
-            print("change2");
-            ChangeSprite(spriteEnerve);
+            ChangeSprite(clientBase.spriteEnerve);
+            audioManager.JoueSfx(clientBase.audioEnerve);
             spriteChanged2 = true;
+            colorSlider.color = Color.red;
         }
         else if (timer <= maxTimer/2 && !spriteChanged1)
         {
-            print("change1");
-            ChangeSprite(spriteAgace);
+            ChangeSprite(clientBase.spriteAgace);
+            audioManager.JoueSfx(clientBase.audioAgace);
             spriteChanged1 = true;
+            colorSlider.color = Color.orange;
         }
 
-        if (timer <= 0 && !commendeFini)
+        if (timer <= 0 && !commandeFini)
         {
+            recetteAnimation.Play("RecetteOut");
+            animation.Play("Client Part");
+            audioManager.JoueSfx(clientBase.audioHeureux);
+            timerSlider.gameObject.SetActive(false);
+            colorSlider.color = Color.mediumSeaGreen;
+        }
+        else if (commandeFini)
+        {
+            recetteAnimation.Play("RecetteOut");
+            ChangeSprite(clientBase.spriteHeureux);
             animation.Play("Client Part");
             timerSlider.gameObject.SetActive(false);
+            colorSlider.color = Color.mediumSeaGreen;
         }
-        else if (commendeFini)
-        {
-            ChangeSprite(spriteHeureu);
-            animation.Play("Client Part");
-            timerSlider.gameObject.SetActive(false);
-        }
+    }
+
+    public void SetClientPartie()
+    {
+        partie = true;
     }
 
     public void NewClient()
     {
         
         gameSystem.UpdateRoundClient();
-        commendeFaite = false;
-        commendeFini = false;
+        commandeFaite = false;
+        commandeFini = false;
         spriteChanged1 = false;
         spriteChanged2 = false;
-        Resources.UnloadAsset(spriteAgace);
-        Resources.UnloadAsset(spriteEnerve);
-        Resources.UnloadAsset(spriteHeureu);
+        partie = false;
         recetteDemander = recettesPossible[Random.Range(0, recettesPossible.Length)];
-        spriteBase = spritesPossible[Random.Range(0, spritesPossible.Length)];
-        spriteHeureu =
-            Resources.Load<Sprite>("Visual\\Sprites\\Client\\Super Heureux\\" + spriteBase.name + "_Super Heureux");
-        spriteAgace = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Agace\\" + spriteBase.name + "_Agace");
-        spriteEnerve = Resources.Load<Sprite>("Visual\\Sprites\\Client\\Enerve\\" + spriteBase.name + "_Enerve");
-        clientSprite.sprite = spriteHeureu;
-        imagePotion.sprite = recetteDemander.sprite;
+        clientBase = clientPossible[Random.Range(0, clientPossible.Length)];
+        clientSprite.sprite = clientBase.spriteHeureux;
+        imageRecette.sprite = recetteDemander.spriteIngredient;
+        potionImage.sprite = recetteDemander.spritePotion;
         timer = maxTimer;
         animation.Play("Client Arriver");
         
@@ -112,21 +131,22 @@ public class Client : MonoBehaviour
     
     private void FacePlayer()
     {
-        clientSprite.sprite = spriteBase;
-        ChangeSprite(spriteBase);
-        animation.Play("Donne Commande");
+        ChangeSprite(clientBase.spriteBase);
+        recetteAnimation.Play("Donne Commande");
+        potionAnimation.Play();
+        SetCommande();
     }
     
-    private void SetCommende()
+    private void SetCommande()
     {
-        commendeFaite = true;
+        commandeFaite = true;
         timerSlider.gameObject.SetActive(true);
         //chaudron.OnOrderStarted();
     }
     
     public void SetFini()
     {
-        commendeFini = true;
-        gameSystem.AddScore(timer*10);
+        commandeFini = true;
+        gameSystem.AddScore(timer*100);
     }
 }

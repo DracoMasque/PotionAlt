@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AltControllerSettings;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,15 +9,19 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    List<Ingrediant> listeIngredients = new List<Ingrediant>();
+    public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
+    private InputReader inputReader;
     private Recette recetteActuel = null;
 
+    private IngredientsAnimationEvents[] a;
     private void Start()
     {
         recettes = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
         gameSystem = GameObject.Find("GameSystem").GetComponent<GameSystem>();
+        GetComponentInChildren<NfcReaderManager>()._chaudronComponent = GetComponent<Chaudron>();
+        a = GetComponentsInChildren<IngredientsAnimationEvents>();
     }
     
     //----------------UPDATE INGREDIENTS---------------
@@ -48,11 +53,13 @@ public class Chaudron : MonoBehaviour
     }
     public void RetireObjects(string id)
     {
+        Debug.Log(id +" Retire objets");
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
         listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
+        Debug.Log(id + " Ajoute Objet");
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
         listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
     }
@@ -62,7 +69,6 @@ public class Chaudron : MonoBehaviour
     {
         List<string> idList = new List<string>();
         
-        IngredientsAnimationEvents[] a = GetComponentsInChildren<IngredientsAnimationEvents>();
         for (int i = 0; i < a.Length; i++)
         {
             idList.Add(a[i].id);
@@ -76,7 +82,6 @@ public class Chaudron : MonoBehaviour
     {
         List<GameObject> objectList = new List<GameObject>();
         
-        Component[] a = GetComponentsInChildren(typeof(IngredientsAnimationEvents), true);
         for (int i = 0; i < a.Length; i++)
         {
             objectList.Add(a[i].gameObject);
@@ -94,9 +99,7 @@ public class Chaudron : MonoBehaviour
         {
             if (objectSceneList[i].GetComponent<IngredientsAnimationEvents>().id == id)
             {
-                print("j'ai trouver");
                 objectScene = objectSceneList[i];
-                print(objectScene.name);
             }
         }
 
@@ -104,27 +107,38 @@ public class Chaudron : MonoBehaviour
     }
     //----------------UPDATE INGREDIENTS---------------
     //Quand le joueur Appuis sur un bouton pour confirmer)
-    public void ConfirmeRecette()
+    public Recette ConfirmeRecette()
     {
         //Regarde tous les ingredients et si ça match
         //Si il y a un truc qui match 
         //Broadcast un message avec l'id ou le nom de la potion
         //OnRecetteConfirme(Recette la_recette)
-        listeIngredients.Sort();
+        
+        //listeIngredients.Sort();
         for (int i = 0; i < recettes.Length; i++)
         {
-            recettes[i].ingredients.Sort();
-            if (listeIngredients == recettes[i].ingredients)
+            int similaire = 0;
+            int similaireObjectif = recettes[i].ingredients.Count;
+            //recettes[i].ingredients.Sort();
+            foreach (Ingrediant ingrediant in listeIngredients)
             {
-                recetteActuel = recettes[i];
-                Debug.Log("Recette confirmé");
+                if (recettes[i].ingredients.Contains(ingrediant))
+                {
+                    similaire++;
+                }
+            }
+            if (similaire ==  similaireObjectif)
+            {
+                return recettes[i];
             }
         }
+        return null;
     }
 
     public void Servire()
     {
         gameSystem.OnRecetteConfirme(recetteActuel);
+        
         recetteActuel = null;
     }
 
