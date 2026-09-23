@@ -11,6 +11,7 @@ public class Melange : MonoBehaviour
     private float previousPosition;
 
     public int rotationNumber = 0;
+    public float timerMelange;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,8 +23,8 @@ public class Melange : MonoBehaviour
     void Update()
     {
         if (stickAction.triggered)
-        {
-          rotation += Rotate(stickAction.ReadValue<Vector2>());  
+        { 
+            Rotate(stickAction.ReadValue<Vector2>());  
         }
         print(rotation);
 
@@ -34,21 +35,20 @@ public class Melange : MonoBehaviour
         }
     }
 
-    public float Rotate(Vector2 direction)
+    public void Rotate(Vector2 direction)
     {
         
         float angle = Mathf.Round((Mathf.Atan2(direction.y, direction.x) * (180 / Mathf.PI)));
         if (angle != previousPosition)
         {
             previousPosition = angle;
-            return angle;
+            AddRotation(angle);
         }
-        
-        return 0f;
+        timerMelange = 0.5f;
     }
-    
-    public int GetRotationNumber()
+
+    public void AddRotation(float rotationToAdd)
     {
-        return rotationNumber;
+        rotation += rotationToAdd;
     }
 }

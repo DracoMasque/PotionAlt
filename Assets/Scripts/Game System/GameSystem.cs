@@ -22,7 +22,6 @@ public class GameSystem : MonoBehaviour
     
     public static GameSystem Instance;
     private Melange melange;
-    private float timerMelange;
 
     void Awake()
     {
@@ -54,18 +53,23 @@ public class GameSystem : MonoBehaviour
             client.NewClient();
         }
 
-        if (melange.rotationNumber == 3 && timerMelange != 0)
+        if (melange.rotationNumber == 3 && melange.timerMelange != 0)
         {
             chaudron.Servire();
+            melange.rotationNumber = 0;
         }
-        else if (melange.rotationNumber <= 2)
+        else if (melange.rotationNumber <= 2 && melange.rotationNumber > 0)
         {
-            timerMelange = 0.5f;
+            
         }
 
-        if (timerMelange > 0)
+        if (melange.timerMelange > 0)
         {
-            timerMelange -= Time.deltaTime;
+            melange.timerMelange -= Time.deltaTime;
+        }
+        else if (melange.timerMelange <= 0)
+        {
+            melange.rotationNumber = 0;
         }
 
         if (melange.rotationNumber > 0 && !gameStarted)
@@ -105,7 +109,7 @@ public class GameSystem : MonoBehaviour
 
     public void UpdateRoundClient()
     {
-        if (numberClientRound > maxClientRound)
+        if (numberClientRound > maxClientRound-1)
         {
             numberClientRound = 1;
             UpdateRoundNumber();
