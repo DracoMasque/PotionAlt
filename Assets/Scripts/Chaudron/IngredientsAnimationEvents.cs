@@ -1,11 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
 public class IngredientsAnimationEvents : MonoBehaviour
 {
     public Ingrediant ingrediant;
-    public string id;
+    public List<string> id;
     private AudioManager audioManager;
     
    
