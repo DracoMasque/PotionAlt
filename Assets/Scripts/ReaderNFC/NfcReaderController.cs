@@ -75,8 +75,8 @@ namespace AltControllerSettings
                 if (uid == null)
                     return;
 
-                current_uid1 = BitConverter.ToString(uid);
-                _mainThreadContext.Post(_ => { Debug.Log("tya une carte de détectée : bip " + current_uid1); }, null);
+                current_uid = BitConverter.ToString(uid);
+                _mainThreadContext.Post(_ => { Debug.Log("tya une carte de détectée : bip " + current_uid); }, null);
             }
             catch (RemovedCardException exception)
             {
@@ -88,7 +88,7 @@ namespace AltControllerSettings
             }
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid1);}, null);
+                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid);}, null);
                 //_chaudronComponent.AjouteObjects(current_uid);
             }
         }
@@ -98,7 +98,7 @@ namespace AltControllerSettings
             _mainThreadContext.Post(_ => { Debug.Log("tya pas une carte de détectée : pas-bip "); }, null);
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid1);}, null);
+                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid);}, null);
             }
             
         }
