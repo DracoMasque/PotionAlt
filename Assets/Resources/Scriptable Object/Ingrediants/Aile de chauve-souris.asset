@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Aile de chauve-souris
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Aile de chauve-souris
-  uid: 3
+  uid: 84-5D-B7-24
+  sprite: {fileID: -5303247421530120293, guid: 739b61b6af69c7042bb38ce0e53d5a74, type: 3}

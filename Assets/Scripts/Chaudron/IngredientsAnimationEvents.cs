@@ -17,6 +17,10 @@ public class IngredientsAnimationEvents : MonoBehaviour
         //Test
         {
             id = ingrediant.uid;
+            if (ingrediant.sprite)
+            {
+                GetComponent<SpriteRenderer>().sprite = ingrediant.sprite;
+            }
         }
         audioManager = FindObjectOfType<AudioManager>().GetComponent<AudioManager>();
 

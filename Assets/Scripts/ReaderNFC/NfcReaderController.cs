@@ -56,12 +56,14 @@ namespace AltControllerSettings
             _monitor.CardRemoved += OnCardRemoved;
             foreach (var readerName in readerNames)
             {
-                _monitor.Start(readerName);
+                print(readerName + " started");
+                _monitor.Start(readerNames);
             }
         }
 
         private void OnCardInserted(object sender, CardStatusEventArgs eventArgs)
         {
+            print("help???");
             try
             {
                 using var context = ContextFactory.Instance.Establish(SCardScope.System);

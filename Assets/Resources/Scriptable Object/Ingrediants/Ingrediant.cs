@@ -6,4 +6,5 @@ public class Ingrediant : ScriptableObject
 {
     public string name;
     public string uid;
+    public Sprite sprite;
 }

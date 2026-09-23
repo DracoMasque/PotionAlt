@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Cristal
   uid: 6
+  sprite: {fileID: 5293031974318352618, guid: 7fa077bc88bbe8541ae23e97952d8514, type: 3}

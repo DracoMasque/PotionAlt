@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Champignon
   uid: 93-66-A6-56
+  sprite: {fileID: 4315506946141470425, guid: 5070e0680fcf6074eae4996c74ed126e, type: 3}

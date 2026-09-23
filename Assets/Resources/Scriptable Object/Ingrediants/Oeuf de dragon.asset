@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Oeuf de dragon
   uid: 5
+  sprite: {fileID: 4646649027328027380, guid: 9713303c1827abd469c4cf3d63d2354a, type: 3}
