@@ -9,6 +9,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
+    [SerializeField] private string quitId = "C4-A7-CC-F1";
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
@@ -52,15 +53,28 @@ public class Chaudron : MonoBehaviour
     }
     public void RetireObjects(string id)
     {
-        Debug.Log(id +" Retire objets");
-        TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
-        listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        if (id != quitId)
+        {
+            Debug.Log(id +" Retire objets");
+            TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
+            listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        }
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
-        Debug.Log(id + " Ajoute Objet");
-        TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
-        listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        if (id == quitId)
+        {
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #endif
+            Application.Quit();
+        }
+        else if (id != quitId)
+        {
+            Debug.Log(id + " Ajoute Objet");
+            TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
+            listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        }
     }
     
     //Recup tous les id des ingredients de la scene
