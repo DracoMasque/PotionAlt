@@ -9,6 +9,8 @@ public class Melange : MonoBehaviour
     private InputAction stickAction;
     private float rotation;
     private float previousPosition;
+    
+    
 
     public int rotationNumber = 0;
     
@@ -51,4 +53,5 @@ public class Melange : MonoBehaviour
     {
         return rotationNumber;
     }
+   
 }
