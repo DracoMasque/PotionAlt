@@ -91,6 +91,10 @@ public class GameSystem : MonoBehaviour
         {
             client.SetFini();
         }
+        else if (recetteJoueur != null)
+        {
+            score -= 500;
+        }
         
     }
 
