@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Os
   uid: 7
+  sprite: {fileID: 4056058344551517612, guid: 9a7b2f9a597121740b6043811676b130, type: 3}

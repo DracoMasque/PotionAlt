@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Globe oculaire
   uid: 83-B8-93-56
+  sprite: {fileID: 49417335881396728, guid: 585319a904bad61408a52b599d421172, type: 3}

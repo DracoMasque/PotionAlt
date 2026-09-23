@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Pied de poulet
   uid: 8
+  sprite: {fileID: -9088068108723427035, guid: 7faad03692481e84a8d314c5c59d5b53, type: 3}

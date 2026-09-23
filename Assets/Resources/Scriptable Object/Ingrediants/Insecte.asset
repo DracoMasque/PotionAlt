@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Insecte
   uid: 1
+  sprite: {fileID: -8055624794270069212, guid: e9e020334c19f70439ac1131702573ff, type: 3}

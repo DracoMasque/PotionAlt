@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Tentacule
   uid: 2
+  sprite: {fileID: -230194567796169486, guid: 0279ecb42304d0146ac98ef886aa66fe, type: 3}
