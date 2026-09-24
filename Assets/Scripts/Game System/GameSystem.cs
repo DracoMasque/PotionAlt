@@ -22,6 +22,7 @@ public class GameSystem : MonoBehaviour
     
     public static GameSystem Instance;
     private Melange melange;
+    [SerializeField] private AudioManager audioManager;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class GameSystem : MonoBehaviour
         chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
         melange = GetComponent<Melange>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();;
         FindObjectOfType<AudioManager>().JoueMusic(0,1);
        
     
@@ -54,6 +56,7 @@ public class GameSystem : MonoBehaviour
     {
         if (client.partie && chaudron.listeIngredients.Count == 0 && currentRound < maxRound-1)
         {
+            print("venir");
             client.NewClient();
         }
         else if (client.partie && chaudron.listeIngredients.Count == 0 && gameStarted)
@@ -99,12 +102,13 @@ public class GameSystem : MonoBehaviour
         if (client.recetteDemander == recetteJoueur)
         {
             client.SetFini();
+            audioManager.JoueSfx(1);
         }
         else if (recetteJoueur != null)
         {
             score -= 500;
+            audioManager.JoueSfx(2);
         }
-        
     }
 
     public void AddScore(float scoreClient)
