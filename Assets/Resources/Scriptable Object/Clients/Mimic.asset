@@ -20,3 +20,4 @@ MonoBehaviour:
   audioAgace: {fileID: 8300000, guid: a69c24df606c6a046a3e6bda075ecbc7, type: 3}
   audioEnerve: {fileID: 8300000, guid: 6877ab6c16ac9e7458a085cbc598b9b7, type: 3}
   audioHeureux: {fileID: 8300000, guid: 6801c1559bd19554c992cf2c161a3f75, type: 3}
+  audioMarche: {fileID: 8300000, guid: 94e37083583fa43499d0915dbbd229a6, type: 3}
