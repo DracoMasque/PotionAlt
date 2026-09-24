@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Os
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Os
-  uid: 7
+  uid:
+  - 04-81-EB-DD-31-02-89
+  - 04-11-5F-DB-31-02-89
+  - 04-71-8B-91-32-02-89
+  - 04-71-2B-8D-32-02-89
+  - 04-71-44-BE-31-02-89
+  - 04-F1-E5-AC-31-02-89
   sprite: {fileID: 4056058344551517612, guid: 9a7b2f9a597121740b6043811676b130, type: 3}

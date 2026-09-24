@@ -13,5 +13,17 @@ MonoBehaviour:
   m_Name: Tentacule
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Tentacule
-  uid: 2
+  uid:
+  - 04-31-38-C0-31-02-89
+  - 04-61-1B-E4-31-02-89
+  - 04-F1-F1-7A-32-02-89
+  - 04-61-7A-07-32-02-89
+  - 04-21-E5-DD-31-02-89
+  - 04-61-8F-E2-31-02-89
+  - 04-61-8F-E2-31-02-89
+  - 04-E1-7C-D2-31-02-89
+  - 04-C1-2C-B0-31-02-89
+  - 04-A1-4C-D5-31-02-89
+  - 04-C1-3C-B2-31-02-89
+  - 04-11-5E-86-32-02-89
   sprite: {fileID: -230194567796169486, guid: 0279ecb42304d0146ac98ef886aa66fe, type: 3}
