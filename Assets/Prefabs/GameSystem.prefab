@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd96ed84b528f464eadb1d068f507ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSystem
-  maxRound: 10
+  maxRound: 5
   currentRound: 0
   score: 0
   maxClientRound: 3
@@ -56,6 +56,7 @@ MonoBehaviour:
   chaudron: {fileID: 0}
   leaderBoard: {fileID: 0}
   listeScore: []
+  audioManager: {fileID: 0}
 --- !u!114 &901017636229933537
 MonoBehaviour:
   m_ObjectHideFlags: 0
