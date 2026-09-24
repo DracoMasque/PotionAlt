@@ -29,7 +29,7 @@ public class Melange : MonoBehaviour
             Rotate(stickAction.ReadValue<Vector2>());  
         }
 
-        if (rotation >= 180f)
+        if (rotation >= 150f)
         {
             rotationNumber++;
             rotation = 0;
@@ -45,7 +45,7 @@ public class Melange : MonoBehaviour
             previousPosition = angle;
             AddRotation(angle);
         }
-        timerMelange = 0.5f;
+        timerMelange = 0.8f;
     }
 
     public void AddRotation(float rotationToAdd)

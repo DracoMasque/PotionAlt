@@ -112,7 +112,7 @@ MonoBehaviour:
   potionObject: {fileID: 0}
   clientSprite: {fileID: 0}
   timer: 0
-  maxTimer: 30
+  maxTimer: 35
   commandeFaite: 0
   commandeFini: 0
   animation: {fileID: 8171436222202350053}
