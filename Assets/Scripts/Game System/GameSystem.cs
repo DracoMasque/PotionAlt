@@ -99,12 +99,13 @@ public class GameSystem : MonoBehaviour
         if (client.recetteDemander == recetteJoueur)
         {
             client.SetFini();
+            FindObjectOfType<AudioManager>().JoueSfx(1);
         }
         else if (recetteJoueur != null)
         {
             score -= 500;
+            FindObjectOfType<AudioManager>().JoueSfx(2);
         }
-        
     }
 
     public void AddScore(float scoreClient)

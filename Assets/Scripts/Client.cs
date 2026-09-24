@@ -98,6 +98,7 @@ public class Client : MonoBehaviour
             recetteAnimation.Play("RecetteOut");
             ChangeSprite(clientBase.spriteHeureux);
             animation.Play("Client Part");
+            audioManager.JoueSfx(clientBase.audioHeureux);
             timerSlider.gameObject.SetActive(false);
             colorSlider.color = Color.mediumSeaGreen;
         }
@@ -127,6 +128,7 @@ public class Client : MonoBehaviour
             potionImage.sprite = recetteDemander.spritePotion;
             timer = maxTimer;
             animation.Play("Client Arriver");
+            audioManager.JoueSfx(clientBase.audioMarche);
         }
         
     }
