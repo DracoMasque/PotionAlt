@@ -9,7 +9,7 @@ public static class SaveSystem
    public static void SaveGame()
    {
        string path = Application.persistentDataPath + FILENAME;
-       ScoreData saveData = new ScoreData();
+       ScoreData saveData = new ScoreData(GameSystem.Instance.listeScore);
        string txt = JsonUtility.ToJson(saveData);
        File.WriteAllText(path, txt);
    }
@@ -20,8 +20,8 @@ public class ScoreData
 {
    [SerializeField] public List<float> listeScore;
    
-   public ScoreData()
+   public ScoreData(List<float> listeScoreActual)
    {
-       listeScore = new List<float>();
+       listeScore = listeScoreActual;
    }
 }
