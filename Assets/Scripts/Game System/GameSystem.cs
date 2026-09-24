@@ -52,9 +52,13 @@ public class GameSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (client.partie && chaudron.listeIngredients.Count == 0)
+        if (client.partie && chaudron.listeIngredients.Count == 0 && currentRound < maxRound-1)
         {
             client.NewClient();
+        }
+        else if (client.partie && chaudron.listeIngredients.Count == 0 && gameStarted)
+        {
+            UpdateRoundClient();
         }
 
         if (melange.rotationNumber > 3)
@@ -127,7 +131,10 @@ public class GameSystem : MonoBehaviour
         {
             //écran finish
             leaderBoard.gameObject.SetActive(true);
+            listeScore.Add(score);
+            leaderBoard.ShowLeaderBoard(listeScore,score);
             SaveSystem.SaveGame();
+            //print("saved");
             gameStarted = false;
         }
     }

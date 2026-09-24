@@ -112,6 +112,7 @@ public class Client : MonoBehaviour
     {
         if (gameSystem.gameStarted)
         {
+            print(gameSystem.gameStarted);
             gameSystem.UpdateRoundClient();
             playedOutPlayed = false;
             commandeFaite = false;
