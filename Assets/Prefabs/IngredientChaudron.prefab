@@ -2557,7 +2557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   ingrediant: {fileID: 0}
-  id: 1
+  id: []
 --- !u!111 &1898093359787632655
 Animation:
   m_ObjectHideFlags: 0
@@ -2567,12 +2567,12 @@ Animation:
   m_GameObject: {fileID: 7663265306079585269}
   m_Enabled: 1
   serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: da106d5d3ca2398479db410bcc610c12, type: 2}
+  m_Animation: {fileID: 7400000, guid: 95189547fa6506a43a84fc76455a0e4a, type: 2}
   m_Animations:
+  - {fileID: 7400000, guid: 95189547fa6506a43a84fc76455a0e4a, type: 2}
   - {fileID: 7400000, guid: d211478582a3ae946ae262ffe389f9b8, type: 2}
-  - {fileID: 7400000, guid: da106d5d3ca2398479db410bcc610c12, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_UpdateMode: 0
   m_CullingType: 0

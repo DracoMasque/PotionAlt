@@ -32,7 +32,7 @@ public class IngredientsAnimationEvents : MonoBehaviour
     }
     public void Disappear()
     {
-        GetComponentInChildren<ParticleSystem>().Play();
+        //GetComponentInChildren<ParticleSystem>().Play();
         GetComponent<Animation>().Play("RemoveIngredient");
     }
     //FONCTION POUR ANIMATION

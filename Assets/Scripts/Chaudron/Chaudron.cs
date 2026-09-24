@@ -9,7 +9,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    [SerializeField] private string quitId = "aaaaaa";//"C4-A7-CC-F1";
+    [SerializeField] private string quitId = "83-B8-93-56";//"C4-A7-CC-F1";
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;
@@ -65,7 +65,7 @@ public class Chaudron : MonoBehaviour
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
-        if (id == quitId)
+        if (id == quitId || id == "83-B8-93-56" || id=="04-61-3B-E6-31-02-89")
         {
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
