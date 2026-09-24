@@ -442,7 +442,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEADERBOARD
+  m_text: LATEST SCORES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f76973e7903914f4ba4a7a4118fc43a3, type: 2}
   m_sharedMaterial: {fileID: -6534911725357024167, guid: f76973e7903914f4ba4a7a4118fc43a3, type: 2}
