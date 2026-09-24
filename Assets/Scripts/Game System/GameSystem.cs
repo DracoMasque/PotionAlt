@@ -81,6 +81,8 @@ public class GameSystem : MonoBehaviour
             LancerJeu();
         }
         
+        leaderBoard.ShowLeaderBoard(listeScore,score);
+        
     }
 
     public void LancerJeu()

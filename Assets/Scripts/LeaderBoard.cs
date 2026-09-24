@@ -21,21 +21,9 @@ public class LeaderBoard : MonoBehaviour
         
     }
 
-    List<float> SortLeader(List<float> numbers)
-    {
-        float[] sorted = numbers.ToArray();
-        Array.Sort(sorted,  (x, y) => x.CompareTo(y));
-        for (int i =0; i < sorted.Length; i++)
-        {
-            //print(i+","+sorted[i]);
-        }
-        return sorted.ToList();
-    }
-
     public void ShowLeaderBoard(List<float> scores, float actualScore)
     {
-        List<float> sortedScores = SortLeader(scores);
-        float[] playerScoresGame = sortedScores.ToArray();
+        float[] playerScoresGame = scores.ToArray();
         for (int i = 0; i < playersScores.Count; i++)
         {
             if (i <= playerScoresGame.Length - 1)
