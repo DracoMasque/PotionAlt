@@ -13,4 +13,5 @@ public class ClientOject : ScriptableObject
     public AudioClip audioAgace;
     public AudioClip audioEnerve;
     public AudioClip audioHeureux;
+    public AudioClip audioMarche;
 }
