@@ -54,6 +54,7 @@ public class GameSystem : MonoBehaviour
     {
         if (client.partie && chaudron.listeIngredients.Count == 0 && currentRound < maxRound-1)
         {
+            print("venir");
             client.NewClient();
         }
         else if (client.partie && chaudron.listeIngredients.Count == 0 && gameStarted)
