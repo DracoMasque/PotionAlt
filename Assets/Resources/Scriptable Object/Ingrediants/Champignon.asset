@@ -13,5 +13,12 @@ MonoBehaviour:
   m_Name: Champignon
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Champignon
-  uid: 93-66-A6-56
+  uid:
+  - 04-41-39-97-32-02-89
+  - 04-81-37-BF-31-02-89
+  - 04-21-0F-D8-31-02-89
+  - 04-11-B1-D6-31-02-89
+  - 04-31-BE-C6-31-02-89
+  - 04-F1-BB-7B-32-02-89
+  - 04-D1-6A-DD-31-02-89
   sprite: {fileID: 4315506946141470425, guid: 5070e0680fcf6074eae4996c74ed126e, type: 3}

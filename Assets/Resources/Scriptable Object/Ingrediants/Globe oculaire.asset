@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Globe oculaire
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Globe oculaire
-  uid: 83-B8-93-56
+  uid:
+  - 04-91-E0-CB-31-02-89
+  - 04-C1-0F-E2-31-02-89
+  - 04-C1-DB-94-32-02-89
+  - 04-A1-29-7D-32-02-89
+  - '04-F1-F7-D9-31-02-89 '
   sprite: {fileID: 49417335881396728, guid: 585319a904bad61408a52b599d421172, type: 3}
