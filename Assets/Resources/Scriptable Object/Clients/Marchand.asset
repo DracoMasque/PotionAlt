@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Marchand
   m_EditorClassIdentifier: Assembly-CSharp::ClientOject
   nom: Marchand
-  spriteBase: {fileID: -8323294735550280044, guid: a6b0092f735bf0d4c834324ddbc1b23b, type: 3}
-  spriteAgace: {fileID: -7375017402866047355, guid: 32064ebc954c94b4c93f9d1453fff567, type: 3}
-  spriteEnerve: {fileID: 3267265486034524500, guid: ec80a07489de3994284cc464370d9ebd, type: 3}
-  spriteHeureux: {fileID: -4417787116344318242, guid: a75cfa3b90dfeda4684f78dc47754286, type: 3}
+  spriteBase: {fileID: 4058776173021618513, guid: 40191f54b0ec11c4a977f0252025be50, type: 3}
+  spriteAgace: {fileID: 2703332705952288886, guid: 8e660204e789b7949bbd39cdfecc0fbb, type: 3}
+  spriteEnerve: {fileID: 5999777994722571093, guid: b1afd49d75628684f9697cbe52f0e9aa, type: 3}
+  spriteHeureux: {fileID: -3607466267744947943, guid: 276522dcb2ad78944a77bb780b7f1ec5, type: 3}
   audioAgace: {fileID: 8300000, guid: b8f71822d10844d438e397033e95e99e, type: 3}
   audioEnerve: {fileID: 8300000, guid: bda598bc584e0d440933d23ba7d6416a, type: 3}
   audioHeureux: {fileID: 8300000, guid: dd58179d8b772054ea4ef01e602eb70a, type: 3}
