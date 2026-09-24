@@ -7386,6 +7386,10 @@ PrefabInstance:
       value: BgFrame01_0
       objectReference: {fileID: 0}
     - target: {fileID: 7184960656921873733, guid: 54f6031baa013a341943825cf9438f14, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3459698497446596619, guid: 8fe52eafe6175c944ba5e97be2ee2a34, type: 3}
+    - target: {fileID: 7184960656921873733, guid: 54f6031baa013a341943825cf9438f14, type: 3}
       propertyPath: m_SortingOrder
       value: -20
       objectReference: {fileID: 0}
