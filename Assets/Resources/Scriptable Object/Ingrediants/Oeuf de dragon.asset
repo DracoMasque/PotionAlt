@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Oeuf de dragon
   uid:
-  - 04-D1-11-C2-31-02-89
+  - 04-71-B5-C6-31-02-89
+  - 04-21-89-0F-32-02-89
+  - 04-41-BB-7E-32-02-89
+  - 04-51-A8-E3-31-02-89
+  - 04-61-01-CE-31-02-89
   sprite: {fileID: 4646649027328027380, guid: 9713303c1827abd469c4cf3d63d2354a, type: 3}

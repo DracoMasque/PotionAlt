@@ -14,9 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Serpent
   uid:
-  - 04-41-26-AD-31-02-89
-  - 04-C1-C4-EB-31-02-89
-  - 04-D1-6F-EA-31-02-89
-  - 04-91-A3-D3-31-02-89
-  - 04-E1-E8-BB-31-02-89
+  - 04-31-F6-C0-31-02-89
   sprite: {fileID: -7766637424382265647, guid: dc902e9b2c4ac5a4da3ca5983b90efcf, type: 3}

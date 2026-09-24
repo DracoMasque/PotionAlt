@@ -9,7 +9,7 @@ public class Chaudron : MonoBehaviour
 {
     [SerializeField] private Recette[] recettes;
     [SerializeField] public GameObject sceneIngredientsParent;
-    [SerializeField] private string quitId = "C4-A7-CC-F1";
+    [SerializeField] private string quitId = "aaaaaa";//"C4-A7-CC-F1";
     public List<Ingrediant> listeIngredients = new List<Ingrediant>();
     
     private GameSystem gameSystem;

@@ -15,4 +15,8 @@ MonoBehaviour:
   name: Cristal
   uid:
   - 04-81-E7-0E-32-02-89
+  - 04-C1-E1-D8-31-02-89
+  - 04-B1-EB-AC-31-02-89
+  - 04-51-FD-C1-31-02-89
+  - 04-01-0B-E3-31-02-89
   sprite: {fileID: 5293031974318352618, guid: 7fa077bc88bbe8541ae23e97952d8514, type: 3}

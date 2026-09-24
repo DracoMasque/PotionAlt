@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Insecte
   m_EditorClassIdentifier: Assembly-CSharp::Ingrediant
   name: Insecte
-  uid: 1
+  uid:
+  - 04-D1-01-85-32-02-89
+  - 04-91-16-99-32-02-89
+  - 04-21-50-C9-31-02-89
+  - 04-71-99-70-32-02-89
+  - 04-31-00-C3-31-02-89
   sprite: {fileID: -8055624794270069212, guid: e9e020334c19f70439ac1131702573ff, type: 3}
