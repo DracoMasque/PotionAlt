@@ -15,4 +15,8 @@ MonoBehaviour:
   name: Aile de chauve-souris
   uid:
   - 93-66-A6-56
+  - 04-81-78-CB-31-02-89
+  - 04-31-C3-80-32-02-89
+  - 04-F1-C3-CE-31-02-89
+  - 04-11-40-94-32-02-89
   sprite: {fileID: -5303247421530120293, guid: 739b61b6af69c7042bb38ce0e53d5a74, type: 3}
