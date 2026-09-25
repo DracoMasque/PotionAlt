@@ -45,7 +45,7 @@ public class Melange : MonoBehaviour
             previousPosition = angle;
             AddRotation(angle);
         }
-        timerMelange = 0.8f;
+        timerMelange = 1f;
     }
 
     public void AddRotation(float rotationToAdd)
