@@ -87,6 +87,7 @@ public class Client : MonoBehaviour
         {
             playedOutPlayed = true;
             recetteAnimation.Play("RecetteOut");
+            potionAnimation.Play("SortiePotion");
             animation.Play("Client Part");
             audioManager.JoueSfx(clientBase.audioEnerve);
             timerSlider.gameObject.SetActive(false);
@@ -96,6 +97,7 @@ public class Client : MonoBehaviour
         {
             playedOutPlayed = true;
             recetteAnimation.Play("RecetteOut");
+            potionAnimation.Play("SortiePotion");
             ChangeSprite(clientBase.spriteHeureux);
             animation.Play("Client Part");
             audioManager.JoueSfx(clientBase.audioHeureux);
@@ -142,7 +144,7 @@ public class Client : MonoBehaviour
     {
         ChangeSprite(clientBase.spriteBase);
         recetteAnimation.Play("Donne Commande");
-        potionAnimation.Play();
+        potionAnimation.Play("EntreePotion");
         SetCommande();
     }
     
