@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Petit
   m_EditorClassIdentifier: Assembly-CSharp::ClientOject
   nom: Petit
-  spriteBase: {fileID: 7449873880705885558, guid: f2ca3bd8f87bcd744a24c41d3abf0021, type: 3}
-  spriteAgace: {fileID: 7241203318727583592, guid: 4a66ce24703420e4d85fbe6c1a10f723, type: 3}
-  spriteEnerve: {fileID: -6903912993236076921, guid: 0db204db4e8465449acf51b047bfb83a, type: 3}
-  spriteHeureux: {fileID: -3928774921156111383, guid: 5e949b69108ead24387c52d2485ae075, type: 3}
+  spriteBase: {fileID: -6061307987440622084, guid: 16de0a34e2bde3247a456cef58412188, type: 3}
+  spriteAgace: {fileID: -7431827241265661254, guid: b0f174f94b4367648bd200d95646a8a0, type: 3}
+  spriteEnerve: {fileID: -8009085009082074440, guid: c586d9270e83ed541b782f431d344cd4, type: 3}
+  spriteHeureux: {fileID: -6550989783649410069, guid: 97897d5d3c01c2d47920e33ee9d39b7f, type: 3}
   audioAgace: {fileID: 8300000, guid: 19f716aeafdd76b40b2c1c763bf0376e, type: 3}
   audioEnerve: {fileID: 8300000, guid: ee3657d57243e8543b0059be65315874, type: 3}
   audioHeureux: {fileID: 8300000, guid: 047bb75ee47156c45b61f95953d8af7c, type: 3}
