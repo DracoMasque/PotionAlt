@@ -7410,11 +7410,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2734924195877809365, guid: a92f4aefe65bc3140a10902d960297f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 16.717
+      value: -0.5873711
       objectReference: {fileID: 0}
     - target: {fileID: 5832773313822838789, guid: a92f4aefe65bc3140a10902d960297f5, type: 3}
       propertyPath: m_Name
       value: Recette
+      objectReference: {fileID: 0}
+    - target: {fileID: 5832773313822838789, guid: a92f4aefe65bc3140a10902d960297f5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786606508722520429, guid: a92f4aefe65bc3140a10902d960297f5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
