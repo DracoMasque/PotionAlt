@@ -17,6 +17,7 @@ public class GameSystem : MonoBehaviour
     public Chaudron chaudron;
     
     public LeaderBoard leaderBoard;
+    public Canvas leaderBoardCanvas;
 
     public List<float> listeScore = new List<float>();
     
@@ -39,7 +40,8 @@ public class GameSystem : MonoBehaviour
         chaudron = GameObject.Find("Chaudron").GetComponent<Chaudron>();
         ScoreData scoreData = LoadSystem.LoadScore();
         melange = GetComponent<Melange>();
-        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        leaderBoardCanvas = GameObject.Find("TitleAndLeaderBoard").GetComponent<Canvas>();
         FindObjectOfType<AudioManager>().JoueMusic(0,1);
        
     
@@ -90,7 +92,7 @@ public class GameSystem : MonoBehaviour
 
     public void LancerJeu()
     {
-        leaderBoard.gameObject.SetActive(false);
+        leaderBoardCanvas.gameObject.SetActive(false);
         gameStarted = true;
         client.NewClient();
         score = 0;
@@ -104,7 +106,7 @@ public class GameSystem : MonoBehaviour
             client.SetFini();
             audioManager.JoueSfx(1);
         }
-        else if (recetteJoueur != null)
+        else
         {
             score -= 500;
             audioManager.JoueSfx(2);
@@ -136,7 +138,7 @@ public class GameSystem : MonoBehaviour
         if (currentRound > maxRound-1)
         {
             //écran finish
-            leaderBoard.gameObject.SetActive(true);
+            leaderBoardCanvas.gameObject.SetActive(true);
             listeScore.Add(score);
             leaderBoard.ShowLeaderBoard(listeScore,score);
             SaveSystem.SaveGame();
