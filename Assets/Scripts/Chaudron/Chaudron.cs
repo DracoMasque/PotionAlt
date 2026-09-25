@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AltControllerSettings;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
 public class Chaudron : MonoBehaviour
@@ -16,6 +17,7 @@ public class Chaudron : MonoBehaviour
     private Recette recetteActuel = null;
 
     private IngredientsAnimationEvents[] a;
+    [FormerlySerializedAs("IndiqueMelange")] public GameObject indiqueMelange;
     private void Start()
     {
         recettes = Resources.LoadAll<Recette>("Scriptable Object\\Recettes");
@@ -62,6 +64,10 @@ public class Chaudron : MonoBehaviour
         Debug.Log(id +" Retire objets");
         TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Disappear();
         listeIngredients.Remove(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        if (listeIngredients.Count != 3)
+        {
+            indiqueMelange.SetActive(false);
+        }
     }
     public void AjouteObjects(string id) //Ingrediant objet
     {
@@ -77,6 +83,11 @@ public class Chaudron : MonoBehaviour
             Debug.Log(id + " Ajoute Objet");
             TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().Appear();
             listeIngredients.Add(TrouveObjetScene(id).GetComponent<IngredientsAnimationEvents>().ingrediant);
+        }
+
+        if (listeIngredients.Count == 3)
+        {
+            indiqueMelange.SetActive(true);
         }
     }
     

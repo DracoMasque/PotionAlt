@@ -23,7 +23,7 @@ public class LeaderBoard : MonoBehaviour
 
     public void ShowLeaderBoard(List<float> scores, float actualScore)
     {
-        float[] playerScoresGame = scores.ToArray();
+        float[] playerScoresGame = scores.ToArray().Reverse().ToArray();
         for (int i = 0; i < playersScores.Count; i++)
         {
             if (i <= playerScoresGame.Length - 1)

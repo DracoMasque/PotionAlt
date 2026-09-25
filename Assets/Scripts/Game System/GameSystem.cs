@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GameSystem : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class GameSystem : MonoBehaviour
     public static GameSystem Instance;
     private Melange melange;
     [SerializeField] private AudioManager audioManager;
+    [FormerlySerializedAs("IndiqueMelange")] public GameObject indiqueMelange;
 
     void Awake()
     {
@@ -93,6 +95,7 @@ public class GameSystem : MonoBehaviour
     public void LancerJeu()
     {
         leaderBoardCanvas.gameObject.SetActive(false);
+        currentRound = 0;
         gameStarted = true;
         client.NewClient();
         score = 0;
@@ -103,11 +106,13 @@ public class GameSystem : MonoBehaviour
     {
         if (client.recetteDemander == recetteJoueur)
         {
+            indiqueMelange.SetActive(false);
             client.SetFini();
             audioManager.JoueSfx(1);
         }
         else
         {
+            indiqueMelange.SetActive(false);
             score -= 500;
             audioManager.JoueSfx(2);
         }

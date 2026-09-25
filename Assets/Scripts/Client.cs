@@ -39,6 +39,7 @@ public class Client : MonoBehaviour
     
     private AudioManager audioManager;
     private bool playedOutPlayed = false;
+    [FormerlySerializedAs("IndiqueMelange")] public GameObject indiqueMelange;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -115,7 +116,6 @@ public class Client : MonoBehaviour
     {
         if (gameSystem.gameStarted)
         {
-            print(gameSystem.gameStarted);
             gameSystem.UpdateRoundClient();
             playedOutPlayed = false;
             commandeFaite = false;
