@@ -90,7 +90,15 @@ namespace AltControllerSettings
                 _mainThreadContext.Post(_ => { Debug.Log("tya pas une carte de détectée : pas-bip "); }, null);
                 if (_chaudronComponent)
                 {
-                    _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid[capteur_i]);}, null);
+                    if (current_uid[capteur_i] == "")
+                    {
+                        _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid[capteur_i]);}, null);
+                    }
+                    else
+                    {
+                        _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid[capteur_i]);}, null);
+                    }
+                    
                 }
                 
             }
