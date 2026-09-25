@@ -18,4 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 020b034b0d7a6674a95d4539f2e1ffc7, type: 2}
   - {fileID: 11400000, guid: 780958b1db92267499e642aea8038f1d, type: 2}
   spriteIngredient: {fileID: -7864899171825365248, guid: 7c61cb001dd592547b0db02269ed94e6, type: 3}
-  spritePotion: {fileID: -3336527765382879002, guid: feaffc6b874fb054b95b09f0d51e1b40, type: 3}
+  spritePotion: {fileID: 5277674771002203124, guid: 2164fb4db0dd0884b83876204bb117ac, type: 3}
