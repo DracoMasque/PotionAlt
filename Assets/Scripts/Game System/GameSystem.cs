@@ -95,6 +95,7 @@ public class GameSystem : MonoBehaviour
     public void LancerJeu()
     {
         leaderBoardCanvas.gameObject.SetActive(false);
+        currentRound = 0;
         gameStarted = true;
         client.NewClient();
         score = 0;

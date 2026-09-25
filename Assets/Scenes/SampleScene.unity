@@ -7592,6 +7592,10 @@ PrefabInstance:
       value: GameSystem
       objectReference: {fileID: 0}
     - target: {fileID: 8935700839723898248, guid: 454c5481f68f62a4faf70d41dcbb1c88, type: 3}
+      propertyPath: maxRound
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8935700839723898248, guid: 454c5481f68f62a4faf70d41dcbb1c88, type: 3}
       propertyPath: leaderBoard
       value: 
       objectReference: {fileID: 1379440222}
