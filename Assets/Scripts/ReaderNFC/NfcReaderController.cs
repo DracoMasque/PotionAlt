@@ -11,7 +11,8 @@ namespace AltControllerSettings
 {
     public class NfcReaderManager : MonoBehaviour
     {
-        private string current_uid;
+        private string[] current_uid;
+        private string[] _readerNames;
         public Chaudron _chaudronComponent;
         private static readonly byte[] _DataToWrite = 
         {
@@ -29,10 +30,12 @@ namespace AltControllerSettings
             _mainThreadContext = SynchronizationContext.Current;
 
             string[] readerNames;
-
+            
             using (var context = ContextFactory.Instance.Establish(SCardScope.System))
             {
                 readerNames = context.GetReaders();
+                _readerNames = readerNames;
+                current_uid = new string[readerNames.Length];
             }
 
             if (IsEmpty(readerNames))
@@ -63,7 +66,9 @@ namespace AltControllerSettings
 
         private void OnCardInserted(object sender, CardStatusEventArgs eventArgs)
         {
-            print("help???");
+            int capteur_i = Array.IndexOf(_readerNames, eventArgs.ReaderName);
+            print(capteur_i);
+            print(current_uid);
             try
             {
                 using var context = ContextFactory.Instance.Establish(SCardScope.System);
@@ -75,7 +80,7 @@ namespace AltControllerSettings
                 if (uid == null)
                     return;
 
-                current_uid = BitConverter.ToString(uid);
+                current_uid[capteur_i] = BitConverter.ToString(uid);
                 _mainThreadContext.Post(_ => { Debug.Log("tya une carte de détectée : bip " + current_uid); }, null);
             }
             catch (RemovedCardException exception)
@@ -88,17 +93,17 @@ namespace AltControllerSettings
             }
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid);}, null);
-                //_chaudronComponent.AjouteObjects(current_uid);
+                _mainThreadContext.Post(_ => {_chaudronComponent.AjouteObjects(current_uid[capteur_i]);}, null);
             }
         }
         
         private void OnCardRemoved(object sender, CardStatusEventArgs e)
         {
+            int capteur_i = Array.IndexOf(_readerNames, e.ReaderName);
             _mainThreadContext.Post(_ => { Debug.Log("tya pas une carte de détectée : pas-bip "); }, null);
             if (_chaudronComponent)
             {
-                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid);}, null);
+                _mainThreadContext.Post(_ => {_chaudronComponent.RetireObjects(current_uid[capteur_i]);}, null);
             }
             
         }
